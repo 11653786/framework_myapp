@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import com.yt.android.activity.IndexActivity;
 import com.yt.android.adapter.FragmentAdapter;
 import com.yt.android.fragment.HomeFragment;
+import com.yt.android.fragment.MyFragment2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
 
 
     private List<Fragment> getFragments() {
-        HomeFragment homeFragment = new HomeFragment();
+        MyFragment2 homeFragment = new MyFragment2();
         List<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(homeFragment);
         return fragments;
