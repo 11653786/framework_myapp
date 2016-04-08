@@ -6,10 +6,12 @@
     <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="fill_parent"
-            android:layout_height="150dp"/>
+            android:layout_height="120dp"/>
+
+
 
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
             >
         <ImageButton
@@ -20,7 +22,7 @@
                 android:layout_height="120dp"/>
         <!--学校概况-->
         <ImageButton
-                android:id="@+id/schooldetail"
+                android:id="@+id/xiaoxiaogaikuang"
                 android:layout_toRightOf="@+id/news"
                 android:layout_width="120dp"
                 android:layout_marginLeft="10dp"
@@ -29,7 +31,8 @@
                 android:background="@drawable/item02"
                 />
 
-        <TextView android:layout_width="wrap_content"
+        <TextView
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_centerHorizontal="true"
                   android:layout_below="@+id/news"
@@ -37,12 +40,52 @@
                 />
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_below="@+id/schooldetail"
-                  android:layout_marginLeft="10dp"
-                  android:layout_centerHorizontal="true"
+                  android:gravity="center"
+                  android:layout_alignParentRight="true"
                   android:layout_toRightOf="@+id/news"
-                  android:text="@string/schooldetail"
-                />
+                  android:text="@string/xiaoxiaogaikuang"
+                  android:layout_below="@+id/xiaoxiaogaikuang"/>
     </RelativeLayout>
+
+
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+            >
+        <ImageButton
+                android:id="@+id/kaoshengwenda"
+                android:layout_width="120dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/item03"
+                android:layout_height="120dp"/>
+        <!--学校概况-->
+        <ImageButton
+                android:id="@+id/xiaoyuanfengcai"
+                android:layout_toRightOf="@+id/kaoshengwenda"
+                android:layout_width="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/item04"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/kaoshengwenda"
+                android:text="@string/kaoshengwenda"
+                />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:layout_alignParentRight="true"
+                  android:layout_toRightOf="@+id/kaoshengwenda"
+                  android:text="@string/xiaoyuanfengcai"
+                  android:layout_below="@+id/xiaoyuanfengcai"/>
+    </RelativeLayout>
+
+
+
 
 </LinearLayout>

@@ -6,5 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="news">新闻</string>
-    <string name="schooldetail">学校概况</string>
+    <string name="xiaoxiaogaikuang">学校概况</string>
+    <string name="kaoshengwenda">考生问答</string>
+    <string name="xiaoyuanfengcai">校园风采</string>
 </resources>
