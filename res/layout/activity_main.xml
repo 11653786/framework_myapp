@@ -1,15 +1,17 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+        >
 
     <android.support.v4.view.ViewPager
+            android:layout_alignParentTop="true"
             android:id="@+id/viewPager"
             android:layout_width="fill_parent"
             android:layout_height="120dp"/>
 
 
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+    <RelativeLayout android:id="@+id/div1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:layout_below="@+id/viewPager"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
             >
@@ -47,7 +49,8 @@
     </RelativeLayout>
 
 
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+    <RelativeLayout android:id="@+id/div2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:layout_below="@+id/div1"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
             >
@@ -84,7 +87,9 @@
                   android:layout_below="@+id/xiaoyuanfengcai"/>
     </RelativeLayout>
 
-    <RadioGroup android:layout_marginBottom="0dp" android:layout_width="fill_parent" android:layout_height="50dp" android:orientation="horizontal">
+    <RadioGroup android:layout_marginBottom="0dp" android:layout_width="fill_parent" android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
         <RadioButton style="@style/bottom_button"
                      android:text="首页"
                 />
@@ -95,4 +100,4 @@
     </RadioGroup>
 
 
-</LinearLayout>
+</RelativeLayout>
