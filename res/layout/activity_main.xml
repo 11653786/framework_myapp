@@ -94,17 +94,21 @@
             android:layout_height="0dp"
             android:layout_weight="1.0"/>
 
-    <RadioGroup android:layout_marginBottom="0dp" android:layout_width="fill_parent" android:layout_height="50dp"
+    <RadioGroup android:layout_marginBottom="0dp" android:layout_width="fill_parent" android:layout_height="70dp"
                 android:layout_alignParentBottom="true"
+                android:id="@+id/radiogroup"
                 android:orientation="horizontal">
         <RadioButton style="@style/bottom_button"
+                     android:id="@+id/indexactivity"
                      android:drawableTop="@drawable/select_tab1_img"
                      android:text="首页"
                 />
         <RadioButton style="@style/bottom_button" android:text="地图"
+                     android:id="@+id/mapactivity"
                      android:drawableTop="@drawable/select_tab2_img"
                 />
         <RadioButton style="@style/bottom_button" android:text="我的"
+                     android:id="@+id/myactivity"
                      android:drawableTop="@drawable/select_tab3_img"
                 />
     </RadioGroup>
