@@ -7,10 +7,10 @@
             android:id="@+id/tabHost"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:background="#cccccc"
-            android:layout_weight="1.0"/>
+         />
 
     <RadioGroup android:layout_marginBottom="0dp" android:layout_width="fill_parent" android:layout_height="70dp"
+                android:background="@drawable/item07"
                 android:layout_alignParentBottom="true"
                 android:id="@+id/radiogroup"
                 android:orientation="horizontal">

@@ -46,9 +46,11 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
 
 
     private List<Fragment> getFragments() {
-        MyFragment2 homeFragment = new MyFragment2();
+        HomeFragment homeFragment = new HomeFragment();
+        MyFragment2 fragment2 = new MyFragment2();
         List<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(homeFragment);
+        fragments.add(fragment2);
         return fragments;
     }
 
