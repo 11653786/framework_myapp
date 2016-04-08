@@ -24,26 +24,22 @@ public class HelloAndroidActivity extends FragmentActivity {
     //底部菜单
     //我的,地图,首页
     private RadioGroup radioGroup;
-    private RadioButton indexButton;
-    private RadioButton mapButton;
-    private RadioButton myButton;
+    private RadioButton tabHome, tabMap, tabMy;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_hello);
         initView();
-        viewpager.setAdapter(new ViewPagerAdapter(imageViews));
     }
 
     private void initView() {
-        viewpager = (ViewPager) findViewById(R.id.viewPager);
-        imageViews = Contains.setImageViews(getApplicationContext());
+        viewpager = (ViewPager) findViewById(R.id.tabHost);
         radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
-        indexButton = (RadioButton) findViewById(R.id.indexactivity);
-        mapButton = (RadioButton) findViewById(R.id.mapactivity);
-        myButton = (RadioButton) findViewById(R.id.myactivity);
+        tabHome = (RadioButton) findViewById(R.id.tabHome);
+        tabMap = (RadioButton) findViewById(R.id.tabMap);
+        tabMy = (RadioButton) findViewById(R.id.tabMy);
     }
 }
 
