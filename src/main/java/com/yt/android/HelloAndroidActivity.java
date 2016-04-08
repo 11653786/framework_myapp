@@ -2,11 +2,17 @@ package com.yt.android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.yt.android.activity.IndexActivity;
+import com.yt.android.adapter.FragmentAdapter;
+import com.yt.android.fragment.HomeFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloAndroidActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -21,9 +27,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
         initView();
-        Intent intent = new Intent();
-        intent.setClass(this, IndexActivity.class);
-        startActivity(intent);
+
     }
 
     private void initView() {
@@ -32,7 +36,19 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         tabHome = (RadioButton) findViewById(R.id.tabHome);
         tabMap = (RadioButton) findViewById(R.id.tabMap);
         tabMy = (RadioButton) findViewById(R.id.tabMy);
+        List<Fragment> fragments = getFragments();
+        FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
+        viewpager.setAdapter(adapter);
         radioGroup.setOnCheckedChangeListener(this);
+        viewpager.setCurrentItem(0);
+    }
+
+
+    private List<Fragment> getFragments() {
+        HomeFragment homeFragment = new HomeFragment();
+        List<Fragment> fragments = new ArrayList<Fragment>();
+        fragments.add(homeFragment);
+        return fragments;
     }
 
     @Override
