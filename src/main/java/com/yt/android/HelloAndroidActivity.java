@@ -1,18 +1,20 @@
 package com.yt.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import com.yt.android.activity.IndexActivity;
 import com.yt.android.adapter.ViewPagerAdapter;
 import com.yt.android.contains.Contains;
 
 import java.util.ArrayList;
 
-public class HelloAndroidActivity extends FragmentActivity {
+public class HelloAndroidActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
     private ViewPager viewpager;
     private ArrayList<ImageView> imageViews;
@@ -32,6 +34,9 @@ public class HelloAndroidActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
         initView();
+        Intent intent = new Intent();
+        intent.setClass(this, IndexActivity.class);
+        startActivity(intent);
     }
 
     private void initView() {
@@ -40,6 +45,31 @@ public class HelloAndroidActivity extends FragmentActivity {
         tabHome = (RadioButton) findViewById(R.id.tabHome);
         tabMap = (RadioButton) findViewById(R.id.tabMap);
         tabMy = (RadioButton) findViewById(R.id.tabMy);
+        radioGroup.setOnCheckedChangeListener(this);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        switch (i) {
+            case R.id.tabHome:
+                tabHome.setChecked(true);
+                tabMap.setChecked(false);
+                tabMy.setChecked(false);
+                viewpager.setCurrentItem(0);
+                break;
+            case R.id.tabMap:
+                tabHome.setChecked(false);
+                tabMap.setChecked(true);
+                tabMy.setChecked(false);
+                viewpager.setCurrentItem(1);
+                break;
+            case R.id.tabMy:
+                tabHome.setChecked(false);
+                tabMap.setChecked(false);
+                tabMy.setChecked(true);
+                viewpager.setCurrentItem(2);
+                break;
+        }
     }
 }
 
