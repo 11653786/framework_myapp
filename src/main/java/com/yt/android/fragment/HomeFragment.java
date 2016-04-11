@@ -30,7 +30,7 @@ import java.util.TimerTask;
 public class HomeFragment extends Fragment implements View.OnTouchListener {
 
 
-    private ViewPager viewpager;
+    private ViewPager lunbo;
     private ArrayList<ImageView> imageViews;
     private int previousSelectPosition = 0;
     private boolean toRight = true;
@@ -50,8 +50,8 @@ public class HomeFragment extends Fragment implements View.OnTouchListener {
         // 第一个参数是这个Fragment将要显示的界面布局,第二个参数是这个Fragment所属的Activity,第三个参数是决定此fragment是否附属于Activity
         View view = inflater.inflate(R.layout.activity_main, container, false);
         initView(view);
-        viewpager.setAdapter(new ViewPagerAdapter(imageViews));
-        viewpager.setOnTouchListener(this);
+        lunbo.setAdapter(new ViewPagerAdapter(imageViews));
+        lunbo.setOnTouchListener(this);
         // 自动切换页面功能
         task = new ImageTimer();
         timer.schedule(task, 1000, 2000); // 1s后执行task,经过1s再次执行
@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment implements View.OnTouchListener {
     }
 
     private void initView(View view) {
-        viewpager = (ViewPager) view.findViewById(R.id.viewPager);
+        lunbo = (ViewPager) view.findViewById(R.id.viewPager);
         imageViews = Contains.setImageViews(getActivity().getApplicationContext());
     }
 
@@ -95,8 +95,8 @@ public class HomeFragment extends Fragment implements View.OnTouchListener {
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
                 //设置轮播图必须放在这里
-                if (viewpager != null) {
-                    viewpager.setCurrentItem(lunbopos);
+                if (lunbo != null) {
+                    lunbo.setCurrentItem(lunbopos);
                 }
             }
         }

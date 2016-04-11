@@ -1,13 +1,11 @@
 package com.yt.android;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import com.yt.android.activity.IndexActivity;
 import com.yt.android.adapter.FragmentAdapter;
 import com.yt.android.fragment.HomeFragment;
 import com.yt.android.fragment.MyFragment2;
