@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment implements View.OnTouchListener {
     }
 
     private void initView(View view) {
-        lunbo = (ViewPager) view.findViewById(R.id.viewPager);
+        lunbo = (ViewPager) view.findViewById(R.id.lunbotu);
         imageViews = Contains.setImageViews(getActivity().getApplicationContext());
     }
 
