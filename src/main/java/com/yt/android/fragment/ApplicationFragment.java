@@ -9,13 +9,15 @@ import android.widget.Toast;
 import com.yt.android.R;
 
 /**
+ * 应用
+ *
  * @author zhangsan
  * @version 1.0
  * @package com.yt.android.fragment
  * @date 2016/4/8 0008 18:18
  * @descption: 疯狂的王麻子团队!
  */
-public class MyFragment2 extends Fragment {
+public class ApplicationFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -15,7 +15,7 @@ import com.yt.android.adapter.FragmentAdapter;
 import com.yt.android.adapter.ViewPagerAdapter;
 import com.yt.android.contains.Contains;
 import com.yt.android.fragment.HomeFragment;
-import com.yt.android.fragment.MyFragment2;
+import com.yt.android.fragment.ApplicationFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,11 +89,13 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
      * @return
      */
     private List<Fragment> getFragments() {
+        //首页
         HomeFragment homeFragment = new HomeFragment();
-        MyFragment2 fragment2 = new MyFragment2();
+        //应用
+        ApplicationFragment applicationFragment = new ApplicationFragment();
         List<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(homeFragment);
-        fragments.add(fragment2);
+        fragments.add(applicationFragment);
         return fragments;
     }
 
