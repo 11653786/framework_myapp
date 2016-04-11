@@ -22,8 +22,9 @@ import java.util.TimerTask;
  * @package com.yt.android.activity
  * @date 2016/4/8 0008 16:42
  * @descption: 疯狂的王麻子团队!
+ * 首页
  */
-public class IndexActivity extends BaseActivity implements  View.OnTouchListener {
+public class IndexActivity extends BaseActivity implements View.OnTouchListener {
 
 
     private ViewPager viewpager;
@@ -51,8 +52,6 @@ public class IndexActivity extends BaseActivity implements  View.OnTouchListener
         viewpager = (ViewPager) findViewById(R.id.viewPager);
         imageViews = Contains.setImageViews(getApplicationContext());
     }
-
-
 
 
     /**

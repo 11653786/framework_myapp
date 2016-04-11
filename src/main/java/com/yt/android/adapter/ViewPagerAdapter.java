@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 /**
+ * 首页底部菜单的切换
+ *
  * @author zhangsan
  * @version 1.0
  * @package com.yt.android.adapter

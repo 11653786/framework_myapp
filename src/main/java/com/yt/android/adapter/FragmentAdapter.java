@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 /**
+ * Fragment适配器
+ *
  * @author zhangsan
  * @version 1.0
  * @package com.yt.android.adapter

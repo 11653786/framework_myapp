@@ -3,6 +3,8 @@ package com.yt.android.base;
 import android.app.Activity;
 
 /**
+ * baseActivity以后用来做扩展
+ *
  * @author zhangsan
  * @version 1.0
  * @package com.yt.android.base

@@ -15,6 +15,9 @@ import com.yt.android.fragment.MyFragment2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 第一个activity
+ */
 public class HelloAndroidActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
     private ViewPager viewpager;
