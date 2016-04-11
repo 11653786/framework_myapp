@@ -28,14 +28,7 @@ public class ApplicationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment2, container, false);
-        view.findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "这个Fragment2哦，要注意了！！", Toast.LENGTH_SHORT).show();
-            }
-        });
+        View view = inflater.inflate(R.layout.fragment_application, container, false);
         return view;
     }
 
