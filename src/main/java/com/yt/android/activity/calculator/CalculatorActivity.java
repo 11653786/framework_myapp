@@ -9,29 +9,12 @@ import com.yt.android.R;
 import com.yt.android.base.BaseActivity;
 
 /**
- * 计算器
+ * 计算器activity
  */
 public class CalculatorActivity extends BaseActivity implements OnClickListener {
 
     //声明一些控件
-    Button btn0 = null;
-    Button btn1 = null;
-    Button btn2 = null;
-    Button btn3 = null;
-    Button btn4 = null;
-    Button btn5 = null;
-    Button btn6 = null;
-    Button btn7 = null;
-    Button btn8 = null;
-    Button btn9 = null;
-    Button btnBackspace = null;
-    Button btnCE = null;
-    Button btnC = null;
-    Button btnAdd = null;
-    Button btnSub = null;
-    Button btnMul = null;
-    Button btnDiv = null;
-    Button btnEqu = null;
+    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnBackspace, btnCE, btnC, btnAdd, btnSub, btnMul, btnDiv, btnEqu;
     TextView tvResult = null;
     //声明两个参数。接收tvResult前后的值
     double num1 = 0, num2 = 0;
@@ -43,7 +26,14 @@ public class CalculatorActivity extends BaseActivity implements OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        //从布局文件中获取控件，
+        initView();
+
+    }
+
+    /**
+     * 初始化view
+     */
+    public void initView() {
         btn0 = (Button) findViewById(R.id.btn0);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
@@ -63,11 +53,9 @@ public class CalculatorActivity extends BaseActivity implements OnClickListener 
         btnMul = (Button) findViewById(R.id.btnMul);
         btnDiv = (Button) findViewById(R.id.btnDiv);
         tvResult = (TextView) findViewById(R.id.tvResult);
-
-        //添加监听\
+        //添加监听
         btnBackspace.setOnClickListener(this);
         btnCE.setOnClickListener(this);
-
         btn0.setOnClickListener(this);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -78,14 +66,14 @@ public class CalculatorActivity extends BaseActivity implements OnClickListener 
         btn7.setOnClickListener(this);
         btn8.setOnClickListener(this);
         btn9.setOnClickListener(this);
-
-
         btnAdd.setOnClickListener(this);
         btnSub.setOnClickListener(this);
         btnMul.setOnClickListener(this);
         btnDiv.setOnClickListener(this);
         btnEqu.setOnClickListener(this);
+
     }
+
 
     @Override
     public void onClick(View v) {

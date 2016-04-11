@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.yt.android.R;
+import com.yt.android.activity.calculator.CalculatorActivity;
+import com.yt.android.util.IntentUtil;
 
 /**
  * 应用
@@ -19,9 +21,9 @@ import com.yt.android.R;
  * @date 2016/4/8 0008 18:18
  * @descption: 疯狂的王麻子团队!
  */
-public class ApplicationFragment extends Fragment{
+public class ApplicationFragment extends Fragment implements View.OnClickListener {
 
-    ImageView jisuanqibutton,mapbutton;
+    ImageView jisuanqibutton, mapbutton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,15 @@ public class ApplicationFragment extends Fragment{
         return view;
     }
 
-    public void initView(View view){
-        jisuanqibutton= (ImageView) view.findViewById(R.id.jisuanqibutton);
-        mapbutton= (ImageView) view.findViewById(R.id.mapbutton);
+    /**
+     * 初始化地图和计算器的按钮
+     * @param view
+     */
+    public void initView(View view) {
+        jisuanqibutton = (ImageView) view.findViewById(R.id.jisuanqibutton);
+        mapbutton = (ImageView) view.findViewById(R.id.mapbutton);
+        mapbutton.setOnClickListener(this);
+        jisuanqibutton.setOnClickListener(this);
     }
 
     @Override
@@ -52,4 +60,21 @@ public class ApplicationFragment extends Fragment{
         super.onPause();
     }
 
+    /**
+     * 跳转地图和计算器
+     *
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.jisuanqibutton:
+                IntentUtil.clickButtonActivity(view.getContext(), CalculatorActivity.class);
+                break;
+            case R.id.mapbutton:
+                ;
+                break;
+        }
+
+    }
 }
