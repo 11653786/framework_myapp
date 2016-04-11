@@ -19,6 +19,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * 首页fragment
+ *
  * @author zhangsan
  * @version 1.0
  * @package com.yt.android.fragment
