@@ -14,7 +14,7 @@ import com.yt.android.base.BaseActivity;
 public class CalculatorActivity extends BaseActivity implements OnClickListener {
 
     //声明一些控件
-    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnBackspace, btnCE, btnC, btnAdd, btnSub, btnMul, btnDiv, btnEqu;
+    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnBackspace, btnCE, btnC, btnAdd, btnSub, btnMul, btnDiv, btnEqu, returnbutton;
     TextView tvResult = null;
     //声明两个参数。接收tvResult前后的值
     double num1 = 0, num2 = 0;
@@ -27,7 +27,6 @@ public class CalculatorActivity extends BaseActivity implements OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
         initView();
-
     }
 
     /**
@@ -52,6 +51,7 @@ public class CalculatorActivity extends BaseActivity implements OnClickListener 
         btnSub = (Button) findViewById(R.id.btnSub);
         btnMul = (Button) findViewById(R.id.btnMul);
         btnDiv = (Button) findViewById(R.id.btnDiv);
+        returnbutton = (Button) findViewById(R.id.returnbutton);
         tvResult = (TextView) findViewById(R.id.tvResult);
         //添加监听
         btnBackspace.setOnClickListener(this);
@@ -71,6 +71,7 @@ public class CalculatorActivity extends BaseActivity implements OnClickListener 
         btnMul.setOnClickListener(this);
         btnDiv.setOnClickListener(this);
         btnEqu.setOnClickListener(this);
+        returnbutton.setOnClickListener(this);
 
     }
 
@@ -256,7 +257,10 @@ public class CalculatorActivity extends BaseActivity implements OnClickListener 
                 tvResult.setText(String.valueOf(Result));
                 isClickEqu = true;
                 break;
-
+            //返回
+            case R.id.returnbutton:this.finish();
+                ;
+                break;
             default:
                 break;
         }

@@ -2,15 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical" >
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp" >
+
+        <ImageView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:background="@drawable/top" />
+
+
+
+        <Button
+                android:id="@+id/returnbutton"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:text="返回"
+                android:textColor="#fff" />
+    </RelativeLayout>
+
+
 
     <LinearLayout android:layout_width="fill_parent"
                   android:layout_height="wrap_content">
         <TextView
                 android:id="@+id/tvResult"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/typebox"
+                android:gravity="center_vertical|right"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="#ff0000"
+                android:textSize="20dp"
                 android:text=""
                 />
     </LinearLayout>
