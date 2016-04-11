@@ -1,16 +1,21 @@
 package com.yt.android;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.*;
+import com.baidu.mapapi.SDKInitializer;
 import com.yt.android.adapter.FragmentAdapter;
 import com.yt.android.adapter.ViewPagerAdapter;
 import com.yt.android.contains.Contains;
@@ -27,7 +32,7 @@ import java.util.TimerTask;
  */
 public class HelloAndroidActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener, View.OnTouchListener {
 
-
+    private static final String LTAG = HelloAndroidActivity.class.getSimpleName();
     //轮播图相关
     private ViewPager lunbo;
     private ArrayList<ImageView> imageViews;
@@ -54,6 +59,8 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
     }
 
     private void initView() {
+        //百度地图的初始化
+        initMap();
         initLunbo();
         viewpager = (ViewPager) findViewById(R.id.tabHost);
         //底部导航菜单
@@ -218,6 +225,48 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
             }
         }
 
+    }
+
+
+    /**
+     * 百度地图相关的东西
+     * 构造广播监听类，监听 SDK key 验证以及网络异常广播
+     */
+    public class SDKReceiver extends BroadcastReceiver {
+        public void onReceive(Context context, Intent intent) {
+            String s = intent.getAction();
+            Log.d(LTAG, "action: " + s);
+            if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR)) {
+                Toast.makeText(getApplicationContext(), "key wrong!", Toast.LENGTH_LONG).show();
+            } else if (s
+                    .equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK)) {
+                Toast.makeText(getApplicationContext(), "key right!", Toast.LENGTH_LONG).show();
+            } else if (s
+                    .equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
+                Toast.makeText(getApplicationContext(), "net wrong!", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private SDKReceiver mReceiver;
+
+
+    public void initMap() {
+        // 注册 SDK 广播监听者
+        IntentFilter iFilter = new IntentFilter();
+        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK);
+        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
+        iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
+        mReceiver = new SDKReceiver();
+        registerReceiver(mReceiver, iFilter);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 取消监听 SDK 广播
+        unregisterReceiver(mReceiver);
     }
 
 
