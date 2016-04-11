@@ -39,14 +39,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/typebox"
                 android:gravity="center_vertical|right"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:textColor="#ff0000"
                 android:textSize="20dp"
-                android:text=""
                 />
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent"
