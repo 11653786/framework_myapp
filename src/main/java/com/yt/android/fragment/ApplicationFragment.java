@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.yt.android.R;
 
@@ -17,7 +19,9 @@ import com.yt.android.R;
  * @date 2016/4/8 0008 18:18
  * @descption: 疯狂的王麻子团队!
  */
-public class ApplicationFragment extends Fragment {
+public class ApplicationFragment extends Fragment{
+
+    ImageView jisuanqibutton,mapbutton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,13 @@ public class ApplicationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_application, container, false);
+        initView(view);
         return view;
+    }
+
+    public void initView(View view){
+        jisuanqibutton= (ImageView) view.findViewById(R.id.jisuanqibutton);
+        mapbutton= (ImageView) view.findViewById(R.id.mapbutton);
     }
 
     @Override
