@@ -44,7 +44,7 @@
         <!--百度地图官方给的ak-->
         <meta-data
                 android:name="com.baidu.lbsapi.API_KEY"
-                android:value="NzHvMbuFVjlbcAcoTm7z3DlIreGbz55F" />
+                android:value="NzHvMbuFVjlbcAcoTm7z3DlIreGbz55F"/>
         <!--首页-->
         <activity android:name=".HelloAndroidActivity">
             <intent-filter>
@@ -55,6 +55,9 @@
         </activity>
         <!--计算器-->
         <activity android:name=".activity.calculator.CalculatorActivity">
+        </activity>
+        <!--地图-->
+        <activity android:name=".activity.map.MapActivity">
         </activity>
     </application>
 

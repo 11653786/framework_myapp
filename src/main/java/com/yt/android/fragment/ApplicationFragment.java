@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.yt.android.R;
 import com.yt.android.activity.calculator.CalculatorActivity;
+import com.yt.android.activity.map.MapActivity;
 import com.yt.android.util.IntentUtil;
 
 /**
@@ -41,6 +42,7 @@ public class ApplicationFragment extends Fragment implements View.OnClickListene
 
     /**
      * 初始化地图和计算器的按钮
+     *
      * @param view
      */
     public void initView(View view) {
@@ -72,7 +74,7 @@ public class ApplicationFragment extends Fragment implements View.OnClickListene
                 IntentUtil.clickButtonActivity(view.getContext(), CalculatorActivity.class);
                 break;
             case R.id.mapbutton:
-                ;
+                IntentUtil.clickButtonActivity(view.getContext(), MapActivity.class);
                 break;
         }
 
