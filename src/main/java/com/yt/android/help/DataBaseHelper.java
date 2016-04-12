@@ -20,8 +20,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String dbName = "test.db";    //数据库名称
     //数据库表的创建
     private static final String createAttachmentSql = "create Table attachment(id integer primary key autoincrement, title varchar(255),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10),content blob)";
-    //学院关系表
-    private static final String createSubjectSql = "create Table attachment(id integer primary key autoincrement,attachmentId integer, title varchar(255),image integer,content blob)";
+
+    public static final String insertSql="insert into attachment values(1,2)";
+
 
     /**
      * 在SQLiteOpenHelper的子类当中，必须有该构造函数
@@ -65,7 +66,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         System.out.println("create a database");
         //execSQL用于执行SQL语句
         db.execSQL(createAttachmentSql);
-        db.execSQL(createSubjectSql);
     }
 
     /**

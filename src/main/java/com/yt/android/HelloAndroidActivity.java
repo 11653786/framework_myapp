@@ -4,7 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,18 +16,21 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 import com.baidu.mapapi.SDKInitializer;
 import com.yt.android.adapter.FragmentAdapter;
 import com.yt.android.adapter.ViewPagerAdapter;
 import com.yt.android.contains.Contains;
-import com.yt.android.fragment.HomeFragment;
+import com.yt.android.entity.Attachment;
 import com.yt.android.fragment.ApplicationFragment;
+import com.yt.android.fragment.HomeFragment;
+import com.yt.android.help.DataBaseHelper;
+import com.yt.android.info.InfoUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * 第一个activity
@@ -61,6 +65,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
     }
 
     private void initView() {
+        createDb();
         //百度地图的初始化
         initMap();
         initLunbo();
@@ -76,6 +81,48 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         viewpager.setAdapter(adapter);
         radioGroup.setOnCheckedChangeListener(this);
         viewpager.setCurrentItem(0);
+    }
+
+
+    private void createDb() {
+        //判断是否保存过数据
+        //String isTrue = SharePreferencesUtil.getData(this.getApplicationContext(), SharePreferencesUtil.is_Save_Attachment);
+        //上下文,数据库名称,null,版本
+        DataBaseHelper dbHelper = new DataBaseHelper(getApplicationContext(), DataBaseHelper.dbName, null, DataBaseHelper.VERSION);
+        //创建的时候执行
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor c = db.rawQuery("select count(*) from attachment", new String[]{});
+        while (c.moveToNext()){
+            long content=c.getLong(0);
+            System.out.println(content);
+
+        }
+        saveNews(InfoUtil.getNews(), db);
+    }
+
+    /**
+     * 保存数据的
+     *
+     * @param news
+     * @param db
+     */
+    private void saveNews(List<Attachment> news, SQLiteDatabase db) {
+        //如果没有保存过,就保存数据
+        try {
+            db.beginTransaction();  //开始事务
+            //保存数据
+            for (int a = 0; a < news.size(); a++) {
+                Attachment attachment = news.get(a);
+                //id integer primary key autoincrement, title varchar(255),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10),content blob
+                db.execSQL(DataBaseHelper.insertSql, new Object[]{attachment.getTitle(), attachment.getImage(), new Date(), "1", attachment.getContent()});
+            }
+        } catch (Exception e) {
+            Log.e("error:::-------------------------------", "" + e.getMessage());
+        } finally {
+            if (db != null) {
+                db.endTransaction();    //结束事务
+            }
+        }
     }
 
     /**
