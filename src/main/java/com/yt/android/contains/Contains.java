@@ -22,8 +22,8 @@ public class Contains {
 
     public static ArrayList<ImageView> setImageViews(Context activity) {
         if (imageViews.isEmpty()) {
-            imageViewIDS = new int[]{R.drawable.lunbo1, R.drawable.lunbo2,
-                    R.drawable.lunbo3,R.drawable.lunbo4};
+            imageViewIDS = new int[]{R.drawable.lunbo111, R.drawable.lunbo222,
+                    R.drawable.lunbo333,R.drawable.lunbo444};
             for (int i = 0; i < imageViewIDS.length; i++) {
                 ImageView imageView = new ImageView(activity);
                 imageView.setBackgroundResource(imageViewIDS[i]);

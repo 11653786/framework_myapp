@@ -17,21 +17,27 @@
             android:layout_height="fill_parent"
             />
 
-    <RadioGroup android:layout_marginBottom="0dp" android:layout_width="fill_parent" android:layout_height="70dp"
-                android:background="@drawable/lunbo1"
+    <RadioGroup android:layout_marginBottom="0dp" android:layout_width="fill_parent" android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
                 android:id="@+id/radiogroup"
                 android:orientation="horizontal">
         <RadioButton style="@style/bottom_button"
                      android:id="@+id/tabHome"
+                     android:background="#cccccc"
                      android:drawableTop="@drawable/select_tab1_img"
                      android:text="首页"
                 />
         <RadioButton style="@style/bottom_button" android:text="应用"
                      android:id="@+id/tabMap"
+                     android:background="#000000"
+                     android:textColor="#ffffff"
                      android:drawableTop="@drawable/select_tab2_img"
                 />
-
+        <RadioButton style="@style/bottom_button" android:text="我的"
+                     android:id="@+id/tabMy"
+                     android:visibility="gone"
+                     android:drawableTop="@drawable/select_tab3_img"
+                />
     </RadioGroup>
 
 </RelativeLayout>
