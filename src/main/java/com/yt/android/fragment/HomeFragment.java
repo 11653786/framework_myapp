@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.xuexiaogaikuang:
                 //学校概况直接跳转到查看activty
-                IntentUtil.clickButtonActivity(getActivity().getApplicationContext(), DetailActivity.class, IntentUtil.Intent_Activity_Params, IntentUtil.school);
+                IntentUtil.clickButtonActivity(getActivity().getApplicationContext(), DetailActivity.class);
                 break;
             case R.id.yuanxijieshao:
                 System.out.println("1");
