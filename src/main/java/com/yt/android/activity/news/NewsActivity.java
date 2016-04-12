@@ -1,13 +1,13 @@
 package com.yt.android.activity.news;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import com.yt.android.R;
 import com.yt.android.adapter.ListViewAdapter;
 import com.yt.android.base.BaseActivity;
-import com.yt.android.listview.MyListView;
+import com.yt.android.listview.RefreshListView;
+import com.yt.android.task.RefreshAsyncTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,26 +21,27 @@ import java.util.List;
  * @date 2016/4/12 0012 12:34
  * @descption: 疯狂的王麻子团队!
  */
-public class NewsActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class NewsActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, RefreshListView.OnRefreshListener {
 
     private Button returnbutton;
     //数据表格
-    private MyListView listview;
+    private RefreshListView listview;
     //title设置
     private TextView title;
+    ListViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         initView();
-        ListViewAdapter adapter = new ListViewAdapter(getApplicationContext(), list());
+        adapter = new ListViewAdapter(getApplicationContext(), list());
         listview.setAdapter(adapter);
     }
 
 
     public void initView() {
-        listview = (MyListView) findViewById(R.id.listview);
+        listview = (RefreshListView) findViewById(R.id.listview);
         returnbutton = (Button) findViewById(R.id.returnbutton);
         title = (TextView) findViewById(R.id.title);
         returnbutton.setOnClickListener(this);
@@ -66,7 +67,6 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     /**
-     *
      * listView滑动事件
      *
      * @param parent
@@ -79,5 +79,11 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
         ListView itemListView = (ListView) parent;
         TextView title = (TextView) itemListView.findViewById(R.id.title);
         Toast.makeText(getApplicationContext(), title.getText(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRefresh() {
+        RefreshAsyncTask asyncTask = new RefreshAsyncTask(adapter, listview, getApplicationContext());
+        asyncTask.execute(null, null, null);
     }
 }

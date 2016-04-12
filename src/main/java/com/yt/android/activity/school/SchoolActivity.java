@@ -1,13 +1,12 @@
 package com.yt.android.activity.school;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.yt.android.R;
 import com.yt.android.adapter.ListViewAdapter;
 import com.yt.android.base.BaseActivity;
-import com.yt.android.listview.MyListView;
+import com.yt.android.listview.RefreshListView;
 import com.yt.android.task.RefreshAsyncTask;
 
 import java.util.ArrayList;
@@ -20,11 +19,11 @@ import java.util.List;
  * @date 2016/4/12 0012 13:23
  * @descption: 疯狂的王麻子团队!
  */
-public class SchoolActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, MyListView.OnRefreshListener {
+public class SchoolActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, RefreshListView.OnRefreshListener {
 
     private Button returnbutton;
     //数据表格
-    private MyListView listview;
+    private RefreshListView listview;
     //title设置
     private TextView title;
     ListViewAdapter adapter;
@@ -39,7 +38,7 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
     }
 
     public void initView() {
-        listview = (MyListView) findViewById(R.id.listview);
+        listview = (RefreshListView) findViewById(R.id.listview);
         returnbutton = (Button) findViewById(R.id.returnbutton);
         title = (TextView) findViewById(R.id.title);
         title.setText("校园风采");

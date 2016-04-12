@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 import com.yt.android.adapter.ListViewAdapter;
-import com.yt.android.listview.MyListView;
+import com.yt.android.listview.RefreshListView;
 
 /**
  * 专门用来刷新自定义listView的线程
@@ -19,10 +19,10 @@ public class RefreshAsyncTask extends AsyncTask<Void, Void, Void> {
 
 
     private ListViewAdapter adapter;
-    private MyListView refreshListView;
+    private RefreshListView refreshListView;
     private Context context;
 
-    public RefreshAsyncTask(ListViewAdapter adapter, MyListView refreshListView, Context context) {
+    public RefreshAsyncTask(ListViewAdapter adapter, RefreshListView refreshListView, Context context) {
         this.adapter = adapter;
         this.refreshListView = refreshListView;
         this.context = context;

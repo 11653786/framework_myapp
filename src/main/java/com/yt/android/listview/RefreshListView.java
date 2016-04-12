@@ -23,7 +23,7 @@ import java.util.Date;
  * @date 2016/4/12 0012 13:37
  * @descption: 疯狂的王麻子团队!
  */
-public class MyListView extends ListView implements AbsListView.OnScrollListener {
+public class RefreshListView extends ListView implements AbsListView.OnScrollListener {
 
     private final static int RELEASE_To_REFRESH = 0;// 下拉过程的状态值
     private final static int PULL_To_REFRESH = 1; // 从下拉返回到不刷新的状态值
@@ -59,12 +59,12 @@ public class MyListView extends ListView implements AbsListView.OnScrollListener
 
     private boolean isRefreshable;
 
-    public MyListView(Context context) {
+    public RefreshListView(Context context) {
         super(context);
         init(context);
     }
 
-    public MyListView(Context context, AttributeSet attrs) {
+    public RefreshListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }

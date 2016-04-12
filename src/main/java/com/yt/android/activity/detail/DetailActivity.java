@@ -10,7 +10,7 @@ import com.yt.android.base.BaseActivity;
 import com.yt.android.util.IntentUtil;
 
 /**
- * 查看详情activity
+ * 查看详情activity,学校概况
  *
  * @author zhangsan
  * @version 1.0
