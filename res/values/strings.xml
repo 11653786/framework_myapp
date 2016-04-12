@@ -7,7 +7,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="news">新闻</string>
     <string name="xiaoxiaogaikuang">学校概况</string>
-    <string name="kaoshengwenda">考生问答</string>
+    <string name="yuanxijieshao">院系介绍</string>
+    <string name="tesezhuanye">特色专业</string>
     <string name="xiaoyuanfengcai">校园风采</string>
     <string name="baidumap">百度地图</string>
     <string name="jisuanqi">计算器</string>

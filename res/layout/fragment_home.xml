@@ -19,7 +19,7 @@
                 android:layout_height="120dp"/>
         <!--学校概况-->
         <ImageButton
-                android:id="@+id/xiaoxiaogaikuang"
+                android:id="@+id/xuexiaogaikuang"
                 android:layout_toRightOf="@+id/news"
                 android:layout_width="120dp"
                 android:layout_marginLeft="10dp"
@@ -41,7 +41,7 @@
                   android:layout_alignParentRight="true"
                   android:layout_toRightOf="@+id/news"
                   android:text="@string/xiaoxiaogaikuang"
-                  android:layout_below="@+id/xiaoxiaogaikuang"/>
+                  android:layout_below="@+id/xuexiaogaikuang"/>
     </RelativeLayout>
 
 
@@ -51,7 +51,7 @@
                     android:gravity="center"
             >
         <ImageButton
-                android:id="@+id/kaoshengwenda"
+                android:id="@+id/yuanxijieshao"
                 android:layout_width="120dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/item03"
@@ -59,7 +59,7 @@
         <!--学校概况-->
         <ImageButton
                 android:id="@+id/xiaoyuanfengcai"
-                android:layout_toRightOf="@+id/kaoshengwenda"
+                android:layout_toRightOf="@+id/yuanxijieshao"
                 android:layout_width="120dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="120dp"
@@ -71,14 +71,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/kaoshengwenda"
-                android:text="@string/kaoshengwenda"
+                android:layout_below="@+id/yuanxijieshao"
+                android:text="@string/yuanxijieshao"
                 />
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:gravity="center"
                   android:layout_alignParentRight="true"
-                  android:layout_toRightOf="@+id/kaoshengwenda"
+                  android:layout_toRightOf="@+id/yuanxijieshao"
                   android:text="@string/xiaoyuanfengcai"
                   android:layout_below="@+id/xiaoyuanfengcai"/>
     </RelativeLayout>
