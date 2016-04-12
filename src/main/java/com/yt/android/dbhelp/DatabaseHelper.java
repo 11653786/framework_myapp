@@ -19,9 +19,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //数据库名称
     public static final String dbName = "test.db";    //数据库名称
     //数据库表的创建
-    private static final String createAttachmentSql = "create Table attachment(id integer primary key autoincrement, title varchar(200),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10))";
+    private static final String createAttachmentSql = "create Table attachment(id integer primary key autoincrement, title varchar(255),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10),content blob)";
     //学院关系表
-    private static final String createSubjectSql = "create Table attachment(id integer primary key autoincrement,attachmentId integer, title varchar(200),image integer)";
+    private static final String createSubjectSql = "create Table attachment(id integer primary key autoincrement,attachmentId integer, title varchar(255),image integer,content blob)";
 
     /**
      * 在SQLiteOpenHelper的子类当中，必须有该构造函数

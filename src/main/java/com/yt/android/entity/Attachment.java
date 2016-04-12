@@ -1,5 +1,6 @@
 package com.yt.android.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Date;
  * @date 2016/4/12 0012 14:22
  * @descption: 疯狂的王麻子团队!
  */
-public class Attachment {
+public class Attachment implements Serializable {
 
     //主键
     private int id;

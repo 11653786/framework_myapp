@@ -1,5 +1,7 @@
 package com.yt.android.entity;
 
+import java.io.Serializable;
+
 /**
  * 特色场馆的关系表
  *
@@ -9,7 +11,7 @@ package com.yt.android.entity;
  * @date 2016/4/12 0012 14:27
  * @descption: 疯狂的王麻子团队!
  */
-public class Subject {
+public class Subject implements Serializable{
     //特色场馆的id
     private int id;
     private int attachmentId;
