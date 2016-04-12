@@ -13,11 +13,12 @@ import com.baidu.mapapi.model.LatLng;
 import com.yt.android.R;
 import com.yt.android.base.BaseActivity;
 
-public class MapActivity extends BaseActivity {
+/**
+ * æ­¤demoç”¨æ¥å±•ç¤ºå¦‚ä½•ç»“åˆå®šä½SDKå®ç°å®šä½ï¼Œå¹¶ä½¿ç”¨MyLocationOverlayç»˜åˆ¶å®šä½ä½ç½® åŒæ—¶å±•ç¤ºå¦‚ä½•ä½¿ç”¨è‡ªå®šä¹‰å›¾æ ‡ç»˜åˆ¶å¹¶ç‚¹å‡»æ—¶å¼¹å‡ºæ³¡æ³¡
+ */
+public class MapActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
-
-
-    // ¶¨Î»Ïà¹Ø
+    // å®šä½ç›¸å…³
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();
     private MyLocationConfiguration.LocationMode mCurrentMode;
@@ -28,121 +29,94 @@ public class MapActivity extends BaseActivity {
     MapView mMapView;
     BaiduMap mBaiduMap;
 
-    // UIÏà¹Ø
+    // UIç›¸å…³
     RadioGroup.OnCheckedChangeListener radioButtonListener;
     Button requestLocButton;
-    boolean isFirstLoc = true; // ÊÇ·ñÊ×´Î¶¨Î»
+    boolean isFirstLoc = true; // æ˜¯å¦é¦–æ¬¡å®šä½
 
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
+        initView();
+
+    }
+
+
+    public void initView() {
         requestLocButton = (Button) findViewById(R.id.button1);
         mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
-        requestLocButton.setText("ÆÕÍ¨");
-        View.OnClickListener btnClickListener = new View.OnClickListener() {
-            public void onClick(View v) {
-                switch (mCurrentMode) {
-                    case NORMAL:
-                        requestLocButton.setText("¸úËæ");
-                        mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
-                        mBaiduMap
-                                .setMyLocationConfigeration(new MyLocationConfiguration(
-                                        mCurrentMode, true, mCurrentMarker));
-                        break;
-                    case COMPASS:
-                        requestLocButton.setText("ÆÕÍ¨");
-                        mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
-                        mBaiduMap
-                                .setMyLocationConfigeration(new MyLocationConfiguration(
-                                        mCurrentMode, true, mCurrentMarker));
-                        break;
-                    case FOLLOWING:
-                        requestLocButton.setText("ÂŞÅÌ");
-                        mCurrentMode = MyLocationConfiguration.LocationMode.COMPASS;
-                        mBaiduMap
-                                .setMyLocationConfigeration(new MyLocationConfiguration(
-                                        mCurrentMode, true, mCurrentMarker));
-                        break;
-                    default:
-                        break;
-                }
-            }
-        };
-        requestLocButton.setOnClickListener(btnClickListener);
-
+        requestLocButton.setText("æ™®é€š");
+        requestLocButton.setOnClickListener(this);
         RadioGroup group = (RadioGroup) this.findViewById(R.id.radioGroup);
-        radioButtonListener = new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.defaulticon) {
-                    // ´«ÈënullÔò£¬»Ö¸´Ä¬ÈÏÍ¼±ê
-                    mCurrentMarker = null;
-                    mBaiduMap
-                            .setMyLocationConfigeration(new MyLocationConfiguration(
-                                    mCurrentMode, true, null));
-                }
-                if (checkedId == R.id.customicon) {
-                    // ĞŞ¸ÄÎª×Ô¶¨Òåmarker
-                    mCurrentMarker = BitmapDescriptorFactory
-                            .fromResource(R.drawable.icon_geo);
-                    mBaiduMap
-                            .setMyLocationConfigeration(new MyLocationConfiguration(
-                                    mCurrentMode, true, mCurrentMarker,
-                                    accuracyCircleFillColor, accuracyCircleStrokeColor));
-                }
-            }
-        };
-        group.setOnCheckedChangeListener(radioButtonListener);
-
-        // µØÍ¼³õÊ¼»¯
+        group.setOnCheckedChangeListener(this);
+        // åœ°å›¾åˆå§‹åŒ–
         mMapView = (MapView) findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
-        // ¿ªÆô¶¨Î»Í¼²ã
+        // å¼€å¯å®šä½å›¾å±‚
         mBaiduMap.setMyLocationEnabled(true);
-        // ¶¨Î»³õÊ¼»¯
+        // å®šä½åˆå§‹åŒ–
         mLocClient = new LocationClient(this);
         mLocClient.registerLocationListener(myListener);
         LocationClientOption option = new LocationClientOption();
-        option.setOpenGps(true); // ´ò¿ªgps
-        option.setCoorType("bd09ll"); // ÉèÖÃ×ø±êÀàĞÍ
+        option.setOpenGps(true); // æ‰“å¼€gps
+        option.setCoorType("bd09ll"); // è®¾ç½®åæ ‡ç±»å‹
         option.setScanSpan(1000);
         mLocClient.setLocOption(option);
         mLocClient.start();
-	}
-
-
-
+    }
 
     /**
-     * ¶¨Î»SDK¼àÌıº¯Êı
+     * ç‚¹å‡»äº‹ä»¶
+     *
+     * @param v
      */
-    public class MyLocationListenner implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            // map view Ïú»Ùºó²»ÔÚ´¦ÀíĞÂ½ÓÊÕµÄÎ»ÖÃ
-            if (location == null || mMapView == null) {
-                return;
-            }
-            MyLocationData locData = new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
-                            // ´Ë´¦ÉèÖÃ¿ª·¢Õß»ñÈ¡µ½µÄ·½ÏòĞÅÏ¢£¬Ë³Ê±Õë0-360
-                    .direction(100).latitude(location.getLatitude())
-                    .longitude(location.getLongitude()).build();
-            mBaiduMap.setMyLocationData(locData);
-            if (isFirstLoc) {
-                isFirstLoc = false;
-                LatLng ll = new LatLng(location.getLatitude(),
-                        location.getLongitude());
-                MapStatus.Builder builder = new MapStatus.Builder();
-                builder.target(ll).zoom(18.0f);
-                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-            }
+    @Override
+    public void onClick(View v) {
+        switch (mCurrentMode) {
+            case NORMAL:
+                requestLocButton.setText("è·Ÿéš");
+                mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
+                mBaiduMap
+                        .setMyLocationConfigeration(new MyLocationConfiguration(
+                                mCurrentMode, true, mCurrentMarker));
+                break;
+            case COMPASS:
+                requestLocButton.setText("æ™®é€š");
+                mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
+                mBaiduMap
+                        .setMyLocationConfigeration(new MyLocationConfiguration(
+                                mCurrentMode, true, mCurrentMarker));
+                break;
+            case FOLLOWING:
+                requestLocButton.setText("ç½—ç›˜");
+                mCurrentMode = MyLocationConfiguration.LocationMode.COMPASS;
+                mBaiduMap
+                        .setMyLocationConfigeration(new MyLocationConfiguration(
+                                mCurrentMode, true, mCurrentMarker));
+                break;
+            default:
+                break;
         }
+    }
 
-        public void onReceivePoi(BDLocation poiLocation) {
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        if (i == R.id.defaulticon) {
+            // ä¼ å…¥nullåˆ™ï¼Œæ¢å¤é»˜è®¤å›¾æ ‡
+            mCurrentMarker = null;
+            mBaiduMap
+                    .setMyLocationConfigeration(new MyLocationConfiguration(
+                            mCurrentMode, true, null));
+        }
+        if (i == R.id.customicon) {
+            // ä¿®æ”¹ä¸ºè‡ªå®šä¹‰marker
+            mCurrentMarker = BitmapDescriptorFactory
+                    .fromResource(R.drawable.icon_geo);
+            mBaiduMap
+                    .setMyLocationConfigeration(new MyLocationConfiguration(
+                            mCurrentMode, true, mCurrentMarker,
+                            accuracyCircleFillColor, accuracyCircleStrokeColor));
         }
     }
 
@@ -160,21 +134,45 @@ public class MapActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        // ÍË³öÊ±Ïú»Ù¶¨Î»
+        // é€€å‡ºæ—¶é”€æ¯å®šä½
         mLocClient.stop();
-        // ¹Ø±Õ¶¨Î»Í¼²ã
+        // å…³é—­å®šä½å›¾å±‚
         mBaiduMap.setMyLocationEnabled(false);
         mMapView.onDestroy();
         mMapView = null;
         super.onDestroy();
     }
 
+    /**
+     * å®šä½SDKç›‘å¬å‡½æ•°
+     */
+    public class MyLocationListenner implements BDLocationListener {
 
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            // map view é”€æ¯åä¸åœ¨å¤„ç†æ–°æ¥æ”¶çš„ä½ç½®
+            if (location == null || mMapView == null) {
+                return;
+            }
+            MyLocationData locData = new MyLocationData.Builder()
+                    .accuracy(location.getRadius())
+                            // æ­¤å¤„è®¾ç½®å¼€å‘è€…è·å–åˆ°çš„æ–¹å‘ä¿¡æ¯ï¼Œé¡ºæ—¶é’ˆ0-360
+                    .direction(100).latitude(location.getLatitude())
+                    .longitude(location.getLongitude()).build();
+            mBaiduMap.setMyLocationData(locData);
+            if (isFirstLoc) {
+                isFirstLoc = false;
+                LatLng ll = new LatLng(location.getLatitude(),
+                        location.getLongitude());
+                MapStatus.Builder builder = new MapStatus.Builder();
+                builder.target(ll).zoom(18.0f);
+                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+            }
+        }
 
-
-
-
-
+        public void onReceivePoi(BDLocation poiLocation) {
+        }
+    }
 
 }
 
