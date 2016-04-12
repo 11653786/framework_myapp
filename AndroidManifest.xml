@@ -59,6 +59,9 @@
         <!--地图-->
         <activity android:name=".activity.map.MapActivity">
         </activity>
+        <!--详情-->
+        <activity android:name=".activity.detail.DetailActivity">
+        </activity>
     </application>
 
 </manifest>

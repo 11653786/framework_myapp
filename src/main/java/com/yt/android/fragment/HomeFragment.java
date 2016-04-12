@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.yt.android.R;
+import com.yt.android.activity.detail.DetailActivity;
+import com.yt.android.util.IntentUtil;
 
 /**
  * 首页fragment
@@ -53,12 +55,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.news:;break;
-            case R.id.xuexiaogaikuang:;break;
-            case R.id.yuanxijieshao:;break;
-            case R.id.xiaoyuanfengcai:;break;
-            case R.id.tesezhuanye:;break;
+        switch (view.getId()) {
+            case R.id.news:
+                ;
+                break;
+            case R.id.xuexiaogaikuang:
+                //学校概况直接跳转到查看activty
+                IntentUtil.clickButtonActivity(getActivity().getApplicationContext(), DetailActivity.class, IntentUtil.Intent_Activity_Params, IntentUtil.school);
+                break;
+            case R.id.yuanxijieshao:
+                ;
+                break;
+            case R.id.xiaoyuanfengcai:
+                ;
+                break;
+            case R.id.tesezhuanye:
+                ;
+                break;
         }
     }
 }
