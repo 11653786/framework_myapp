@@ -91,39 +91,15 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         DataBaseHelper dbHelper = new DataBaseHelper(getApplicationContext(), DataBaseHelper.dbName, null, DataBaseHelper.VERSION);
         //创建的时候执行
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.rawQuery("select count(*) from attachment", new String[]{});
-        while (c.moveToNext()){
-            long content=c.getLong(0);
+        Cursor c = db.rawQuery("select * from attachment", null);
+        while (c.moveToNext()) {
+            long content = c.getInt(0);
             System.out.println(content);
 
         }
-        saveNews(InfoUtil.getNews(), db);
     }
 
-    /**
-     * 保存数据的
-     *
-     * @param news
-     * @param db
-     */
-    private void saveNews(List<Attachment> news, SQLiteDatabase db) {
-        //如果没有保存过,就保存数据
-        try {
-            db.beginTransaction();  //开始事务
-            //保存数据
-            for (int a = 0; a < news.size(); a++) {
-                Attachment attachment = news.get(a);
-                //id integer primary key autoincrement, title varchar(255),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10),content blob
-                db.execSQL(DataBaseHelper.insertSql, new Object[]{attachment.getTitle(), attachment.getImage(), new Date(), "1", attachment.getContent()});
-            }
-        } catch (Exception e) {
-            Log.e("error:::-------------------------------", "" + e.getMessage());
-        } finally {
-            if (db != null) {
-                db.endTransaction();    //结束事务
-            }
-        }
-    }
+
 
     /**
      * 初始化轮播图方法

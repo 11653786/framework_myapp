@@ -3,6 +3,8 @@ package com.yt.android.help;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import com.yt.android.entity.Attachment;
+import com.yt.android.info.InfoUtil;
 
 import java.util.Date;
 
@@ -21,7 +23,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //数据库表的创建
     private static final String createAttachmentSql = "create table attachment(id integer primary key autoincrement, title varchar(255),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10),content blob)";
 
-    public static final String insertSql = "insert into attachment values(null,?,?,?,?,?)";
+    public static final String insertSql = "insert into attachment(id,title,image,createDate,type,content) values(null,?,?,?,?,?)";
 
 
     /**
@@ -50,6 +52,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //execSQL用于执行SQL语句
         db.execSQL(createAttachmentSql);
+        for (int a = 0; a < InfoUtil.getNews().size(); a++) {
+            Attachment attachment = InfoUtil.getNews().get(a);
+            db.execSQL(DataBaseHelper.insertSql, new Object[]{attachment.getTitle(), attachment.getImage(), new Date(), "1", attachment.getContent()});
+        }
     }
 
     /**
