@@ -1,5 +1,6 @@
 package com.yt.android.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 import com.yt.android.R;
 import com.yt.android.activity.detail.DetailActivity;
 import com.yt.android.util.IntentUtil;
+
+import java.util.Map;
 
 /**
  * 首页fragment
@@ -61,7 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.xuexiaogaikuang:
                 //学校概况直接跳转到查看activty
-                IntentUtil.clickButtonActivity(getActivity().getApplicationContext(), DetailActivity.class, IntentUtil.Intent_Activity_Params, IntentUtil.school);
+                IntentUtil.clickButtonActivity(getActivity(), DetailActivity.class, IntentUtil.Intent_Activity_Params, IntentUtil.school);
                 break;
             case R.id.yuanxijieshao:
                 System.out.println("1");

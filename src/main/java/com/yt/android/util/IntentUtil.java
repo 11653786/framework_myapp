@@ -1,5 +1,6 @@
 package com.yt.android.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -36,33 +37,33 @@ public class IntentUtil {
     /**
      * 跳转activity并且传递参数
      *
-     * @param context
+     * @param activity
      * @param clazz
-     * @param params  传递参数的key
-     * @param values  传递参数的值
+     * @param params   传递参数的key
+     * @param values   传递参数的值
      */
-    public static void clickButtonActivity(Context context, Class clazz, String params, String values) {
-        Intent intent = new Intent(context, clazz);
+    public static void clickButtonActivity(Activity activity, Class clazz, String params, String values) {
+        Intent intent = new Intent(activity, clazz);
         intent.putExtra(params, values);
-        context.startActivity(intent);
+        activity.startActivity(intent);
     }
 
 
     /**
      * 跳转activity并且传递参数
      *
-     * @param context
+     * @param activity
      * @param clazz
-     * @param params  传递参数的key
-     * @param values  传递参数的值
-     * @param idKey   sqlLite 主键名称
-     * @param idValue 主键的值
+     * @param params   传递参数的key
+     * @param values   传递参数的值
+     * @param idKey    sqlLite 主键名称
+     * @param idValue  主键的值
      */
-    public static void clickButtonActivity(Context context, Class clazz, String params, String values, String idKey, String idValue) {
-        Intent intent = new Intent(context, clazz);
+    public static void clickButtonActivity(Activity activity, Class clazz, String params, String values, String idKey, String idValue) {
+        Intent intent = new Intent(activity, clazz);
         intent.putExtra(params, values);
         intent.putExtra(idKey, idValue);
-        context.startActivity(intent);
+        activity.startActivity(intent);
     }
 
     /**

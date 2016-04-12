@@ -34,7 +34,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
     public void initView() {
         returnButton = (Button) findViewById(R.id.returnbutton);
-        desc = (Button) findViewById(R.id.desc);
+        desc = (TextView) findViewById(R.id.desc);
         returnButton.setOnClickListener(this);
         initIntent();
     }
