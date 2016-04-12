@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.yt.android.R;
 import com.yt.android.activity.detail.DetailActivity;
 import com.yt.android.activity.news.NewsActivity;
+import com.yt.android.activity.school.SchoolActivity;
 import com.yt.android.util.IntentUtil;
 
 import java.util.Map;
@@ -71,7 +72,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 System.out.println("1");
                 break;
             case R.id.xiaoyuanfengcai:
-                System.out.println("1");
+                IntentUtil.clickButtonActivity(getActivity(), SchoolActivity.class);
                 break;
             case R.id.tesezhuanye:
                 System.out.println("1");

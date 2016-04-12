@@ -62,8 +62,11 @@
         <!--详情-->
         <activity android:name=".activity.detail.DetailActivity">
         </activity>
-        <!--详情-->
+        <!--新闻-->
         <activity android:name=".activity.news.NewsActivity">
+        </activity>
+        <!--校园风采-->
+        <activity android:name=".activity.school.SchoolActivity">
         </activity>
     </application>
 
