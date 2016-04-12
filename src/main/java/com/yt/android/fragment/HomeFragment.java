@@ -41,10 +41,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public void initView(View view) {
         news = (Button) view.findViewById(R.id.news);
-        xuexiaogaikuang = (Button) view.findViewById(R.id.news);
-        yuanxijieshao = (Button) view.findViewById(R.id.news);
-        xiaoyuanfengcai = (Button) view.findViewById(R.id.news);
-        tesezhuanye = (Button) view.findViewById(R.id.news);
+        xuexiaogaikuang = (Button) view.findViewById(R.id.xuexiaogaikuang);
+        yuanxijieshao = (Button) view.findViewById(R.id.yuanxijieshao);
+        xiaoyuanfengcai = (Button) view.findViewById(R.id.xiaoyuanfengcai);
+        tesezhuanye = (Button) view.findViewById(R.id.tesezhuanye);
         news.setOnClickListener(this);
         xuexiaogaikuang.setOnClickListener(this);
         yuanxijieshao.setOnClickListener(this);
@@ -57,20 +57,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.news:
-                ;
+                System.out.println("1");
                 break;
             case R.id.xuexiaogaikuang:
                 //学校概况直接跳转到查看activty
                 IntentUtil.clickButtonActivity(getActivity().getApplicationContext(), DetailActivity.class, IntentUtil.Intent_Activity_Params, IntentUtil.school);
                 break;
             case R.id.yuanxijieshao:
-                ;
+                System.out.println("1");
                 break;
             case R.id.xiaoyuanfengcai:
-                ;
+                System.out.println("1");
                 break;
             case R.id.tesezhuanye:
-                ;
+                System.out.println("1");
                 break;
         }
     }
