@@ -39,6 +39,13 @@ public class Attachment {
         this.type = type;
     }
 
+    public Attachment(String title, int image, String content, String type) {
+        this.image = image;
+        this.content = content;
+        this.title = title;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }
