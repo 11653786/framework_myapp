@@ -52,11 +52,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //execSQL用于执行SQL语句
         db.execSQL(createAttachmentSql);
+        //初始化新闻数据]
+        initNews(db);
+    }
+
+    /**
+     * 新闻数据加入
+     *
+     * @param db
+     */
+    private void initNews(SQLiteDatabase db) {
         for (int a = 0; a < InfoUtil.getNews().size(); a++) {
             Attachment attachment = InfoUtil.getNews().get(a);
-            db.execSQL(DataBaseHelper.insertSql, new Object[]{attachment.getTitle(), attachment.getImage(), new Date(), "1", attachment.getContent()});
+            db.execSQL(DataBaseHelper.insertSql, new Object[]{attachment.getTitle(), attachment.getImage(), new Date(), attachment.getType(), attachment.getContent()});
         }
     }
+
 
     /**
      * 升级sqLite的时候有用,version由自己控制

@@ -91,7 +91,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         DataBaseHelper dbHelper = new DataBaseHelper(getApplicationContext(), DataBaseHelper.dbName, null, DataBaseHelper.VERSION);
         //创建的时候执行
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.rawQuery("select * from attachment", null);
+        Cursor c = db.rawQuery("select * from attachment where type=?",new String[]{"1"});
         while (c.moveToNext()) {
             long content = c.getInt(0);
             System.out.println(content);
