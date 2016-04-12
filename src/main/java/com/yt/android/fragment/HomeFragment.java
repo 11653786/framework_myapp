@@ -19,7 +19,8 @@ import com.yt.android.R;
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    private ImageView news,xuexiaogaikuang,yuanxijieshao,xiaoyuanfengcai;
+    //新闻,学校概况，院系介绍,校园风采
+    private ImageView news, xuexiaogaikuang, yuanxijieshao, xiaoyuanfengcai;
 
 
     @Override
