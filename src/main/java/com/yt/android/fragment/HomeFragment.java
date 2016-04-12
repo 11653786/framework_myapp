@@ -1,20 +1,18 @@
 package com.yt.android.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import com.yt.android.R;
 import com.yt.android.activity.detail.DetailActivity;
 import com.yt.android.activity.news.NewsActivity;
 import com.yt.android.activity.school.SchoolActivity;
+import com.yt.android.activity.school.introduce.IntroductActivity;
+import com.yt.android.activity.subject.SubjectActivity;
 import com.yt.android.util.IntentUtil;
-
-import java.util.Map;
 
 /**
  * 首页fragment
@@ -69,13 +67,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 IntentUtil.clickButtonActivity(getActivity(), DetailActivity.class, IntentUtil.Intent_Activity_Params, IntentUtil.school);
                 break;
             case R.id.yuanxijieshao:
-                System.out.println("1");
+                IntentUtil.clickButtonActivity(getActivity(), IntroductActivity.class);
                 break;
             case R.id.xiaoyuanfengcai:
                 IntentUtil.clickButtonActivity(getActivity(), SchoolActivity.class);
                 break;
             case R.id.tesezhuanye:
-                System.out.println("1");
+                IntentUtil.clickButtonActivity(getActivity(), SubjectActivity.class);
                 break;
         }
     }

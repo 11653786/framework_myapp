@@ -33,7 +33,6 @@
             android:resizeable="true"
             android:smallScreens="true"/>
 
-
     <!--注入百度地图的服务-->
     <application
             android:name=".application.MyApplication"
@@ -67,6 +66,12 @@
         </activity>
         <!--校园风采-->
         <activity android:name=".activity.school.SchoolActivity">
+        </activity>
+        <!--特色专业-->
+        <activity android:name=".activity.subject.SubjectActivity">
+        </activity>
+        <!--院系介绍-->
+        <activity android:name=".activity.school.introduce.IntroductActivity">
         </activity>
     </application>
 

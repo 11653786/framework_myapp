@@ -1,4 +1,4 @@
-package com.yt.android.activity.school;
+package com.yt.android.activity.school.introduce;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,15 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 校园风采
- *
  * @author zhangsan
  * @version 1.0
- * @package com.yt.android.activity.school
- * @date 2016/4/12 0012 13:23
+ * @package com.yt.android.activity.school.introduce
+ * @date 2016/4/12 0012 14:12
  * @descption: 疯狂的王麻子团队!
  */
-public class SchoolActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, RefreshListView.OnRefreshListener {
+public class IntroductActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, RefreshListView.OnRefreshListener {
 
     private Button returnbutton;
     //数据表格
@@ -43,7 +41,7 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
         listview = (RefreshListView) findViewById(R.id.listview);
         returnbutton = (Button) findViewById(R.id.returnbutton);
         title = (TextView) findViewById(R.id.title);
-        title.setText("校园风采");
+        title.setText("院系介绍");
         returnbutton.setOnClickListener(this);
         listview.setOnItemClickListener(this);
         listview.setonRefreshListener(this);
