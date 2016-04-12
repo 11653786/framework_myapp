@@ -1,11 +1,9 @@
 package com.yt.android.activity.news;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import com.yt.android.R;
 import com.yt.android.adapter.ListViewAdapter;
 import com.yt.android.base.BaseActivity;
@@ -45,6 +43,7 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
         returnbutton = (Button) findViewById(R.id.returnbutton);
         title = (TextView) findViewById(R.id.title);
         returnbutton.setOnClickListener(this);
+        listview.setOnItemClickListener(this);
     }
 
     public List<String> list() {
@@ -65,7 +64,19 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
+    /**
+     *
+     * listView滑动事件
+     *
+     * @param parent
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+        ListView itemListView = (ListView) parent;
+        TextView title = (TextView) itemListView.findViewById(R.id.title);
+        Toast.makeText(getApplicationContext(), title.getText(), Toast.LENGTH_LONG).show();
     }
 }
