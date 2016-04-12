@@ -11,7 +11,7 @@
         <Button
                 android:id="@+id/news"
                 style="@style/home_buton_style"
-                android:background="@drawable/item01"
+                android:background="@drawable/button_2"
                 android:text="@string/news"
                 />
 
@@ -19,14 +19,14 @@
                 android:id="@+id/xuexiaogaikuang"
                 android:text="@string/xuexiaogaikuang"
                 style="@style/home_buton_style"
-                android:background="@drawable/item02"
+                android:background="@drawable/button_3"
                 />
 
         <Button
                 android:id="@+id/xiaoyuanfengcai"
                 android:text="@string/xiaoyuanfengcai"
                 style="@style/home_buton_style"
-                android:background="@drawable/item03"
+                android:background="@drawable/button_6"
                 />
 
     </LinearLayout>
@@ -37,21 +37,21 @@
                 style="@style/home_buton_style"
                 android:id="@+id/yuanxijieshao"
                 android:text="@string/yuanxijieshao"
-                android:background="@drawable/item04"
+                android:background="@drawable/button_5"
                 />
 
         <Button
                 android:id="@+id/tesezhuanye"
                 android:text="@string/tesezhuanye"
                 style="@style/home_buton_style"
-                android:background="@drawable/item05"
+                android:background="@drawable/button_9"
                 />
 
         <!--不显示却站地方-->
         <Button
                 style="@style/home_buton_style"
                 android:visibility="invisible"
-                android:background="@drawable/item06"
+                android:background="@drawable/button_3"
                 />
 
     </LinearLayout>
