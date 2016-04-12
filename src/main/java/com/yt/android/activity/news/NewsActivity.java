@@ -46,6 +46,7 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
         title = (TextView) findViewById(R.id.title);
         returnbutton.setOnClickListener(this);
         listview.setOnItemClickListener(this);
+        listview.setonRefreshListener(this);
     }
 
     public List<String> list() {
