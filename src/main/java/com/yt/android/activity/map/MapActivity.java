@@ -1,6 +1,7 @@
 package com.yt.android.activity.map;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -25,6 +26,11 @@ public class MapActivity extends BaseActivity implements View.OnClickListener, R
     BitmapDescriptor mCurrentMarker;
     private static final int accuracyCircleFillColor = 0xAAFFFF88;
     private static final int accuracyCircleStrokeColor = 0xAA00FF00;
+
+    //经度纬度
+    private Double latitude;
+    private Double longitude;
+
 
     MapView mMapView;
     BaiduMap mBaiduMap;
@@ -154,16 +160,16 @@ public class MapActivity extends BaseActivity implements View.OnClickListener, R
             if (location == null || mMapView == null) {
                 return;
             }
-            MyLocationData locData = new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
-                            // 此处设置开发者获取到的方向信息，顺时针0-360
-                    .direction(100).latitude(location.getLatitude())
-                    .longitude(location.getLongitude()).build();
+            // 此处设置开发者获取到的方向信息，顺时针0-360.
+            MyLocationData locData = new MyLocationData.Builder().accuracy(location.getRadius()).direction(100).latitude(location.getLatitude()).longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
             if (isFirstLoc) {
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
+                //首次加载地图获取经纬度
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
@@ -171,6 +177,7 @@ public class MapActivity extends BaseActivity implements View.OnClickListener, R
         }
 
         public void onReceivePoi(BDLocation poiLocation) {
+            Log.e("error", poiLocation.getLatitude() + "" + poiLocation.getLongitude());
         }
     }
 
