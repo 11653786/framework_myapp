@@ -62,6 +62,9 @@
         <!--详情-->
         <activity android:name=".activity.detail.DetailActivity">
         </activity>
+        <!--详情-->
+        <activity android:name=".activity.news.NewsActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -22,12 +22,12 @@ import java.util.List;
 public class ListViewAdapter extends BaseAdapter {
 
 
-    private Context activityContext;
+    private LayoutInflater mInflater = null;
     private List<String> list;
 
     public ListViewAdapter(Context context, List<String> list) {
-        this.activityContext = context;
         this.list = list;
+        this.mInflater = LayoutInflater.from(context);
 
     }
 
@@ -50,20 +50,21 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (null == convertView) {
-            LayoutInflater inflater = ((Activity) activityContext).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.item_news, null);
+            convertView = mInflater.inflate(R.layout.item_news, null);
             holder = new ViewHolder();
-            ViewHolder.title = (TextView) convertView.findViewById(R.id.image);
-            ViewHolder.image = (ImageView) convertView.findViewById(R.id.image);
-            ViewHolder.desc = (TextView) convertView.findViewById(R.id.image);
+            holder.title = (TextView) convertView.findViewById(R.id.title);
+            holder.image = (ImageView) convertView.findViewById(R.id.image);
+            holder.desc = (TextView) convertView.findViewById(R.id.desc);
         }
         return convertView;
     }
 
-
+    /**
+     * viewHolder,listView的性能优化
+     */
     static class ViewHolder {
-        static TextView title;
-        static ImageView image;
-        static TextView desc;
+        TextView title;
+        ImageView image;
+        TextView desc;
     }
 }

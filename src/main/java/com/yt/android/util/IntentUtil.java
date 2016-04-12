@@ -35,6 +35,18 @@ public class IntentUtil {
 
 
     /**
+     * 跳转activity
+     *
+     * @param context
+     * @param clazz
+     */
+    public static void clickButtonActivity(Activity activity, Class clazz) {
+        Intent intent = new Intent(activity, clazz);  //方法1
+        activity.startActivity(intent);
+    }
+
+
+    /**
      * 跳转activity并且传递参数
      *
      * @param activity

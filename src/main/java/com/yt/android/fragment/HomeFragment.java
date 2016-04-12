@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import com.yt.android.R;
 import com.yt.android.activity.detail.DetailActivity;
+import com.yt.android.activity.news.NewsActivity;
 import com.yt.android.util.IntentUtil;
 
 import java.util.Map;
@@ -60,7 +61,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.news:
-                System.out.println("1");
+                IntentUtil.clickButtonActivity(getActivity(), NewsActivity.class);
                 break;
             case R.id.xuexiaogaikuang:
                 //学校概况直接跳转到查看activty
