@@ -7,6 +7,7 @@ import android.widget.*;
 import com.yt.android.R;
 import com.yt.android.adapter.ListViewAdapter;
 import com.yt.android.base.BaseActivity;
+import com.yt.android.listview.MyListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
 
     private Button returnbutton;
     //数据表格
-    private ListView listview;
+    private MyListView listview;
     //title设置
     private TextView title;
 
@@ -39,7 +40,7 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
 
 
     public void initView() {
-        listview = (ListView) findViewById(R.id.listview);
+        listview = (MyListView) findViewById(R.id.listview);
         returnbutton = (Button) findViewById(R.id.returnbutton);
         title = (TextView) findViewById(R.id.title);
         returnbutton.setOnClickListener(this);
