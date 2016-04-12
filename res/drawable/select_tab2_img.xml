@@ -1,4 +1,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/tab_channel_pressed" android:state_checked="true"></item>
-    <item android:drawable="@drawable/tab_channel_normal"></item>
+    <item android:drawable="@drawable/query1" android:state_checked="true"></item>
+    <item android:drawable="@drawable/query2"></item>
 </selector>
