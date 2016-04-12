@@ -19,9 +19,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //数据库名称
     public static final String dbName = "test.db";    //数据库名称
     //数据库表的创建
-    private static final String createAttachmentSql = "create Table attachment(id integer primary key autoincrement, title varchar(255),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10),content blob)";
+    private static final String createAttachmentSql = "create table attachment(id integer primary key autoincrement, title varchar(255),image integer,createDate DATETIME DEFAULT CURRENT_TIMESTAMP,type varchar(10),content blob)";
 
-    public static final String insertSql="insert into attachment values(1,2)";
+    public static final String insertSql = "insert into attachment values(null,?,?,?,?,?)";
 
 
     /**
@@ -48,22 +48,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //该函数是在第一次创建的时候执行，实际上是第一次得到SQLiteDatabase对象的时候才会调用这个方法
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-     /*   //主键
-        private int id;
-        //标题
-        private String title;
-        //图片
-        private int image;
-        //内容
-        private String content;
-        //只有新闻有createTime
-        private Date createDate;
-        //类型 1.新闻 2.校园概况 3.校园风采 4.特色展馆 5.院系介绍
-        private String type;*/
-
-
-        System.out.println("create a database");
         //execSQL用于执行SQL语句
         db.execSQL(createAttachmentSql);
     }
