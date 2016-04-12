@@ -11,6 +11,7 @@ package com.yt.android.entity;
  */
 public class Subject {
     //特色场馆的id
+    private int id;
     private int attachmentId;
     private String title;
     private String content;
@@ -19,11 +20,12 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(int attachmentId, String title, String content, int image) {
+    public Subject(int id,int attachmentId, String title, String content, int image) {
         this.attachmentId = attachmentId;
         this.title = title;
         this.content = content;
         this.image = image;
+        this.id=id;
     }
 
     public int getAttachmentId() {
@@ -56,5 +58,13 @@ public class Subject {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
