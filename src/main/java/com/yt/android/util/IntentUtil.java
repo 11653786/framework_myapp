@@ -66,6 +66,40 @@ public class IntentUtil {
         activity.startActivity(intent);
     }
 
+
+    /**
+     * 跳转activity并且传递参数
+     *
+     * @param context
+     * @param clazz
+     * @param params  传递参数的key
+     * @param values  传递参数的值
+     */
+    public static void clickButtonActivity(Context context, Class clazz, String params, String values) {
+        Intent intent = new Intent(context, clazz);
+        intent.putExtra(params, values);
+        context.startActivity(intent);
+    }
+
+
+    /**
+     * 跳转activity并且传递参数
+     *
+     * @param context
+     * @param clazz
+     * @param params  传递参数的key
+     * @param values  传递参数的值
+     * @param idKey   sqlLite 主键名称
+     * @param idValue 主键的值
+     */
+    public static void clickButtonActivity(Context context, Class clazz, String params, String values, String idKey, String idValue) {
+        Intent intent = new Intent(context, clazz);
+        intent.putExtra(params, values);
+        intent.putExtra(idKey, idValue);
+        context.startActivity(intent);
+    }
+
+
     /**
      * 获取传递参数的方法
      *
