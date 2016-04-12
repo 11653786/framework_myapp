@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.*;
 import com.baidu.mapapi.SDKInitializer;
 import com.yt.android.adapter.FragmentAdapter;
@@ -52,6 +53,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);// 填充标题栏
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();

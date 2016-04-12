@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.yt.android.R;
 import com.yt.android.base.BaseActivity;
-import com.yt.android.info.SchoolInfo;
 import com.yt.android.util.IntentUtil;
 
 /**
@@ -47,7 +46,6 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
             if (activityParams != null && !activityParams.equals("")) {
                 //学校概况
                 if (activityParams.equalsIgnoreCase(IntentUtil.school)) {
-                    desc.setText(SchoolInfo.School_Introduce);
                 }
             }
         }

@@ -49,7 +49,7 @@
             android:layout_below="@id/main"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="描述...."
+            android:text="@string/detailschool"
             android:textColor="#000000"/>
 
 </RelativeLayout>
