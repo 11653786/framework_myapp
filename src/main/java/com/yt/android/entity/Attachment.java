@@ -38,7 +38,7 @@ public class Attachment implements Serializable {
         this.type = type;
     }
 
-    public Attachment(int id, String title, int image, String content, Date createDate, String type) {
+    public Attachment(int id, String title, int image, Date createDate, String type, String content) {
         this.id = id;
         this.title = title;
         this.image = image;
@@ -53,9 +53,6 @@ public class Attachment implements Serializable {
         this.title = title;
         this.type = type;
     }
-
-
-
 
 
     public int getId() {
