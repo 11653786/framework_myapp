@@ -51,13 +51,30 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (null == convertView) {
+            Attachment attachment = list.get(position);
             convertView = mInflater.inflate(R.layout.item_news, null);
             holder = new ViewHolder();
             holder.title = (TextView) convertView.findViewById(R.id.title);
             holder.image = (ImageView) convertView.findViewById(R.id.image);
             holder.desc = (TextView) convertView.findViewById(R.id.desc);
+            setView(attachment, holder.title, holder.image, holder.desc);
         }
         return convertView;
+    }
+
+
+    private void setView(Attachment attachment, TextView title, ImageView image, TextView desc) {
+        if (attachment.getTitle() != null) {
+            title.setText(attachment.getTitle());
+        }
+
+        if (attachment.getImage() != 0) {
+            image.setBackgroundResource(attachment.getImage());
+        }
+
+        if (attachment.getContent() != null) {
+            desc.setText(attachment.getContent());
+        }
     }
 
     /**
