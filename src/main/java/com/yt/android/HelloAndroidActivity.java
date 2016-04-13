@@ -67,7 +67,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
     }
 
     private void initView() {
-        createDb();
+        DataBaseHelper.createDb(getApplicationContext(),"1");
         //百度地图的初始化
         initMap();
         initLunbo();
@@ -85,31 +85,6 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         viewpager.setCurrentItem(0);
     }
 
-
-    private void createDb() {
-        //判断是否保存过数据
-        //String isTrue = SharePreferencesUtil.getData(this.getApplicationContext(), SharePreferencesUtil.is_Save_Attachment);
-        //上下文,数据库名称,null,版本
-        DataBaseHelper dbHelper = new DataBaseHelper(getApplicationContext(), DataBaseHelper.dbName, null, DataBaseHelper.VERSION);
-        //创建的时候执行
-        final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.rawQuery("select * from attachment where type=?", new String[]{"1"});
-        while (c.moveToNext()) {
-            int id = c.getInt(0);
-            String title = c.getString(1);
-            int image = c.getInt(2);
-            String myDate = c.getString(c.getColumnIndex("createDate"));
-            Date date = new Date(myDate);
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String formatter = format.format(date);
-
-            // Date date = format.parse(myDate);
-            String type = c.getString(4);
-            String content = c.getString(5);
-            Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
-
-        }
-    }
 
 
     /**

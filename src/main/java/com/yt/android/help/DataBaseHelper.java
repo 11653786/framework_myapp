@@ -1,11 +1,14 @@
 package com.yt.android.help;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.yt.android.entity.Attachment;
 import com.yt.android.info.InfoUtil;
+import com.yt.android.util.DateUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -85,5 +88,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
         System.out.println("upgrade a database");
+    }
+
+
+    public static void createDb(Context context, String type) {
+        //判断是否保存过数据
+        //String isTrue = SharePreferencesUtil.getData(this.getApplicationContext(), SharePreferencesUtil.is_Save_Attachment);
+        //上下文,数据库名称,null,版本
+        DataBaseHelper dbHelper = new DataBaseHelper(context, DataBaseHelper.dbName, null, DataBaseHelper.VERSION);
+        //创建的时候执行
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor c = db.rawQuery(getListByType, new String[]{type});
+        while (c.moveToNext()) {
+            int id = c.getInt(0);
+            String title = c.getString(1);
+            int image = c.getInt(2);
+            Date date = DateUtil.DateFormatter(c, "createDate");
+            String dateFormatter = DateUtil.DateFormatter(date, DateUtil.formatter);
+            String types = c.getString(4);
+            String content = c.getString(5);
+
+        }
     }
 }
