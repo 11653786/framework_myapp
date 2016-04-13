@@ -90,7 +90,7 @@ public class SubjectActivity extends BaseActivity implements View.OnClickListene
         protected List<Attachment> doInBackground(String... strings) {
             initView();
             //获取游标
-            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(), "4"));
+            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(),DataBaseHelper.getListByType, "4"));
         }
 
 

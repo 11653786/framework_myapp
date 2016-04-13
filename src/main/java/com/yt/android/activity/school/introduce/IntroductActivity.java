@@ -87,7 +87,7 @@ public class IntroductActivity extends BaseActivity implements View.OnClickListe
         protected List<Attachment> doInBackground(String... strings) {
             initView();
             //获取游标
-            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(), "5"));
+            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(),DataBaseHelper.getListByType, "5"));
         }
 
 

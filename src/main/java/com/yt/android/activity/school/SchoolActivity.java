@@ -89,7 +89,7 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
         protected List<Attachment> doInBackground(String... strings) {
             initView();
             //获取游标
-            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(), "3"));
+            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(),DataBaseHelper.getListByType, "3"));
         }
 
 

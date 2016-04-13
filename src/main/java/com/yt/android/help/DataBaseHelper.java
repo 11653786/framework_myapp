@@ -102,12 +102,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * 获取sqlite游标的方法
      *
      * @param context
-     * @param type
+     * @param params
      * @return
      */
-    public static Cursor getCursor(Context context, String type) {
+    public static Cursor getCursor(Context context,String sql, String params) {
         SQLiteDatabase db = createDb(context);
-        return db.rawQuery(getListByType, new String[]{type});
+        return db.rawQuery(sql, new String[]{params});
     }
 
     /**

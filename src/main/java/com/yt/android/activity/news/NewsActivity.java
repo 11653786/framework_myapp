@@ -1,6 +1,7 @@
 package com.yt.android.activity.news;
 
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -95,7 +96,7 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
         protected List<Attachment> doInBackground(String... strings) {
             initView();
             //获取游标
-            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(), "1"));
+            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(),DataBaseHelper.getListByType, "1"));
         }
 
 
