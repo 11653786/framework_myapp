@@ -26,6 +26,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String insertSql = "insert into attachment(id,title,image,createDate,type,content) values(null,?,?,?,?,?)";
 
+    public static final String getListByType = "select * from attachment where type=?";
+
 
     /**
      * 在SQLiteOpenHelper的子类当中，必须有该构造函数

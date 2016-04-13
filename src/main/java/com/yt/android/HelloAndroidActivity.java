@@ -30,6 +30,8 @@ import com.yt.android.fragment.HomeFragment;
 import com.yt.android.help.DataBaseHelper;
 import com.yt.android.info.InfoUtil;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -91,14 +93,23 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         DataBaseHelper dbHelper = new DataBaseHelper(getApplicationContext(), DataBaseHelper.dbName, null, DataBaseHelper.VERSION);
         //创建的时候执行
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.rawQuery("select * from attachment where type=?",new String[]{"1"});
+        Cursor c = db.rawQuery("select * from attachment where type=?", new String[]{"1"});
         while (c.moveToNext()) {
-            long content = c.getInt(0);
-            System.out.println(content);
+            int id = c.getInt(0);
+            String title = c.getString(1);
+            int image = c.getInt(2);
+            String myDate = c.getString(c.getColumnIndex("createDate"));
+            Date date = new Date(myDate);
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formatter = format.format(date);
+
+            // Date date = format.parse(myDate);
+            String type = c.getString(4);
+            String content = c.getString(5);
+            Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
 
         }
     }
-
 
 
     /**
