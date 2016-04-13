@@ -67,7 +67,6 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
     }
 
     private void initView() {
-        DataBaseHelper.createDb(getApplicationContext(),"1");
         //百度地图的初始化
         initMap();
         initLunbo();
