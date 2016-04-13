@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.yt.android.R;
+import com.yt.android.entity.Attachment;
 
 import java.util.List;
 
@@ -23,9 +24,9 @@ public class ListViewAdapter extends BaseAdapter {
 
 
     private LayoutInflater mInflater = null;
-    private List<String> list;
+    private List<Attachment> list;
 
-    public ListViewAdapter(Context context, List<String> list) {
+    public ListViewAdapter(Context context, List<Attachment> list) {
         this.list = list;
         this.mInflater = LayoutInflater.from(context);
 
