@@ -1,11 +1,14 @@
 package com.yt.android.activity.school;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.yt.android.R;
 import com.yt.android.adapter.ListViewAdapter;
 import com.yt.android.base.BaseActivity;
+import com.yt.android.entity.Attachment;
+import com.yt.android.help.DataBaseHelper;
 import com.yt.android.listview.RefreshListView;
 import com.yt.android.task.RefreshAsyncTask;
 
@@ -34,9 +37,8 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-        initView();
-        adapter = new ListViewAdapter(getApplicationContext(), list());
-        listview.setAdapter(adapter);
+        SchoolAsyncTask schoolAsyncTask = new SchoolAsyncTask();
+        schoolAsyncTask.execute("");
     }
 
     public void initView() {
@@ -47,16 +49,6 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
         returnbutton.setOnClickListener(this);
         listview.setOnItemClickListener(this);
         listview.setonRefreshListener(this);
-    }
-
-    public List<String> list() {
-        List<String> list = new ArrayList<String>();
-        list.add("hehe");
-        list.add("hehe");
-        list.add("hehe");
-        list.add("hehe");
-        list.add("hehe");
-        return list;
     }
 
 
@@ -89,5 +81,23 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
     public void onRefresh() {
         RefreshAsyncTask asyncTask = new RefreshAsyncTask(adapter, listview, getApplicationContext());
         asyncTask.execute(null, null, null);
+    }
+
+    private class SchoolAsyncTask extends AsyncTask<String, Integer, List<Attachment>> {
+
+        @Override
+        protected List<Attachment> doInBackground(String... strings) {
+            initView();
+            //获取游标
+            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(), "3"));
+        }
+
+
+        @Override
+        protected void onPostExecute(List<Attachment> attachments) {
+            super.onPostExecute(attachments);
+            adapter = new ListViewAdapter(getApplicationContext(), attachments);
+            listview.setAdapter(adapter);
+        }
     }
 }

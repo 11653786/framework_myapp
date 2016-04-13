@@ -4,8 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,14 +22,9 @@ import com.baidu.mapapi.SDKInitializer;
 import com.yt.android.adapter.FragmentAdapter;
 import com.yt.android.adapter.ViewPagerAdapter;
 import com.yt.android.contains.Contains;
-import com.yt.android.entity.Attachment;
 import com.yt.android.fragment.ApplicationFragment;
 import com.yt.android.fragment.HomeFragment;
-import com.yt.android.help.DataBaseHelper;
-import com.yt.android.info.InfoUtil;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**

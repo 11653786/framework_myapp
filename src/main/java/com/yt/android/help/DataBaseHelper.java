@@ -127,6 +127,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String types = cursor.getString(4);
             String content = cursor.getString(5);
             Attachment attachment = new Attachment(id, title, image, createDate, types, content);
+            attachments.add(attachment);
         }
         return attachments;
     }
