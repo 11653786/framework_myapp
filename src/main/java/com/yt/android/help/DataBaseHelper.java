@@ -30,7 +30,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String insertSql = "insert into attachment(id,title,image,createDate,type,content) values(null,?,?,?,?,?)";
 
     public static final String getListByType = "select * from attachment where type=?";
-
+    //主键查询的sql
+    public static final String getAttachmentById = "select * from attachment where id=?";
 
     /**
      * 在SQLiteOpenHelper的子类当中，必须有该构造函数
@@ -105,7 +106,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * @param params
      * @return
      */
-    public static Cursor getCursor(Context context,String sql, String params) {
+    public static Cursor getCursor(Context context, String sql, String params) {
         SQLiteDatabase db = createDb(context);
         return db.rawQuery(sql, new String[]{params});
     }
@@ -130,5 +131,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             attachments.add(attachment);
         }
         return attachments;
+    }
+
+    public static Attachment findAttachmentById(Context context, String sql, String id) {
+        List<Attachment> attachments = getAttachmentList(getCursor(context, sql, id));
+        if (!attachments.isEmpty()) {
+            return attachments.get(0);
+        }
+        return null;
     }
 }
