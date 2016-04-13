@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.yt.android.R;
 import com.yt.android.entity.Attachment;
+import com.yt.android.util.DateUtil;
 
 import java.util.List;
 
@@ -54,16 +55,20 @@ public class ListViewAdapter extends BaseAdapter {
             Attachment attachment = list.get(position);
             convertView = mInflater.inflate(R.layout.item_news, null);
             holder = new ViewHolder();
+            holder.id = (TextView) convertView.findViewById(R.id.id);
             holder.title = (TextView) convertView.findViewById(R.id.title);
             holder.image = (ImageView) convertView.findViewById(R.id.image);
             holder.desc = (TextView) convertView.findViewById(R.id.desc);
-            setView(attachment, holder.title, holder.image, holder.desc);
+            holder.newstime = (TextView) convertView.findViewById(R.id.newstime);
+
+            setView(attachment, holder.id, holder.title, holder.image, holder.desc, holder.newstime);
         }
         return convertView;
     }
 
 
-    private void setView(Attachment attachment, TextView title, ImageView image, TextView desc) {
+    private void setView(Attachment attachment, TextView id, TextView title, ImageView image, TextView desc, TextView newTime) {
+        id.setText(String.valueOf(attachment.getId()));
         if (attachment.getTitle() != null) {
             title.setText(attachment.getTitle());
         }
@@ -75,14 +80,21 @@ public class ListViewAdapter extends BaseAdapter {
         if (attachment.getContent() != null) {
             desc.setText(attachment.getContent());
         }
+
+        if (attachment.getCreateDate() != null) {
+            newTime.setText(DateUtil.DateFormatter(attachment.getCreateDate(), DateUtil.formatter));
+        }
+
     }
 
     /**
      * viewHolder,listView的性能优化
      */
     static class ViewHolder {
-        TextView title;
-        ImageView image;
-        TextView desc;
+        TextView id;        //id
+        TextView title;     //标题
+        ImageView image;    //图片
+        TextView desc;      //内容
+        TextView newstime;  //创建时间
     }
 }
