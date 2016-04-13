@@ -7,6 +7,7 @@ import com.yt.android.entity.Attachment;
 import com.yt.android.info.InfoUtil;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zhangsan
@@ -53,7 +54,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //execSQL用于执行SQL语句
         db.execSQL(createAttachmentSql);
         //初始化新闻数据]
-        initNews(db);
+        initNews(InfoUtil.getNews(), db);
+        initNews(InfoUtil.getIntroduce(), db);
+        initNews(InfoUtil.getXjfc(), db);
+        initNews(InfoUtil.getSubject(), db);
     }
 
     /**
@@ -61,9 +65,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      *
      * @param db
      */
-    private void initNews(SQLiteDatabase db) {
-        for (int a = 0; a < InfoUtil.getNews().size(); a++) {
-            Attachment attachment = InfoUtil.getNews().get(a);
+    private void initNews(List<Attachment> attachments, SQLiteDatabase db) {
+        for (int a = 0; a < attachments.size(); a++) {
+            Attachment attachment = attachments.get(a);
             db.execSQL(DataBaseHelper.insertSql, new Object[]{attachment.getTitle(), attachment.getImage(), new Date(), attachment.getType(), attachment.getContent()});
         }
     }
