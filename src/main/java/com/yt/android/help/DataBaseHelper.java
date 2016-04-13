@@ -133,6 +133,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return attachments;
     }
 
+    /**
+     * 主键查询
+     * @param context
+     * @param sql
+     * @param id
+     * @return
+     */
     public static Attachment findAttachmentById(Context context, String sql, String id) {
         List<Attachment> attachments = getAttachmentList(getCursor(context, sql, id));
         if (!attachments.isEmpty()) {

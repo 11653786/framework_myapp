@@ -33,7 +33,7 @@
             android:textColor="#fff"/>
 
     <ImageView
-            android:id="@+id/main"
+            android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
@@ -46,7 +46,7 @@
             android:id="@+id/desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/main"
+            android:layout_below="@id/image"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="@string/detailschool"
