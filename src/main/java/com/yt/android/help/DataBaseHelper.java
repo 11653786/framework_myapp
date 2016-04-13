@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.yt.android.entity.Attachment;
-import com.yt.android.info.InfoUtil;
+import com.yt.android.util.InfoUtil;
 import com.yt.android.util.DateUtil;
 
 import java.util.ArrayList;

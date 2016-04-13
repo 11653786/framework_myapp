@@ -1,4 +1,4 @@
-package com.yt.android.info;
+package com.yt.android.util;
 
 import com.yt.android.R;
 import com.yt.android.entity.Attachment;
