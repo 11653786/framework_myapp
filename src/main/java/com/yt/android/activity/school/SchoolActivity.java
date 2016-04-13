@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.yt.android.R;
+import com.yt.android.activity.detail.DetailActivity;
 import com.yt.android.adapter.ListViewAdapter;
 import com.yt.android.base.BaseActivity;
 import com.yt.android.entity.Attachment;
 import com.yt.android.help.DataBaseHelper;
 import com.yt.android.listview.RefreshListView;
 import com.yt.android.task.RefreshAsyncTask;
+import com.yt.android.util.IntentUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +73,8 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
     public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
         ListView itemListView = (ListView) parent;
         TextView title = (TextView) itemListView.findViewById(R.id.title);
-        Toast.makeText(getApplicationContext(), title.getText(), Toast.LENGTH_LONG).show();
+        TextView id = (TextView) itemListView.findViewById(R.id.id);
+        IntentUtil.clickButtonActivity(this, DetailActivity.class, "id", id.getText().toString(), "actions", "新闻");
     }
 
     /**
@@ -89,7 +92,7 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
         protected List<Attachment> doInBackground(String... strings) {
             initView();
             //获取游标
-            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(),DataBaseHelper.getListByType, "3"));
+            return DataBaseHelper.getAttachmentList(DataBaseHelper.getCursor(getApplicationContext(), DataBaseHelper.getListByType, "3"));
         }
 
 
