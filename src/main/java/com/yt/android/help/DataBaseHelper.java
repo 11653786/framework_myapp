@@ -8,7 +8,7 @@ import com.yt.android.entity.Attachment;
 import com.yt.android.info.InfoUtil;
 import com.yt.android.util.DateUtil;
 
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -98,18 +98,36 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return dbHelper.getWritableDatabase();
     }
 
-
-    public static void createDb(Context context, String type) {
+    /**
+     * 获取sqlite游标的方法
+     *
+     * @param context
+     * @param type
+     * @return
+     */
+    public static Cursor getCursor(Context context, String type) {
         SQLiteDatabase db = createDb(context);
-        Cursor c = db.rawQuery(getListByType, new String[]{type});
-        while (c.moveToNext()) {
-            int id = c.getInt(0);
-            String title = c.getString(1);
-            int image = c.getInt(2);
-            Date date = DateUtil.DateFormatter(c, "createDate");
-            String dateFormatter = DateUtil.DateFormatter(date, DateUtil.formatter);
-            String types = c.getString(4);
-            String content = c.getString(5);
+        return db.rawQuery(getListByType, new String[]{type});
+    }
+
+    /**
+     * 获取实体类的方法
+     *
+     * @param cursor
+     * @return
+     */
+    public static List<Attachment> getAttachmentList(Cursor cursor) {
+        List<Attachment> attachments = new ArrayList<Attachment>();
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String title = cursor.getString(1);
+            int image = cursor.getInt(2);
+            Date createDate = DateUtil.DateFormatter(cursor, "createDate");
+            //String dateFormatter = DateUtil.DateFormatter(date, DateUtil.formatter);
+            String types = cursor.getString(4);
+            String content = cursor.getString(5);
+            Attachment attachment = new Attachment(id, title, image, createDate, types, content);
         }
+        return attachments;
     }
 }
