@@ -91,13 +91,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public static void createDb(Context context, String type) {
-        //判断是否保存过数据
-        //String isTrue = SharePreferencesUtil.getData(this.getApplicationContext(), SharePreferencesUtil.is_Save_Attachment);
+    public static SQLiteDatabase createDb(Context context) {
         //上下文,数据库名称,null,版本
         DataBaseHelper dbHelper = new DataBaseHelper(context, DataBaseHelper.dbName, null, DataBaseHelper.VERSION);
         //创建的时候执行
-        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        return dbHelper.getWritableDatabase();
+    }
+
+
+    public static void createDb(Context context, String type) {
+        SQLiteDatabase db = createDb(context);
         Cursor c = db.rawQuery(getListByType, new String[]{type});
         while (c.moveToNext()) {
             int id = c.getInt(0);
@@ -107,7 +110,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String dateFormatter = DateUtil.DateFormatter(date, DateUtil.formatter);
             String types = c.getString(4);
             String content = c.getString(5);
-
         }
     }
 }
