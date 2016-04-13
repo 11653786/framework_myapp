@@ -1,4 +1,4 @@
-package com.yt.android.tts;
+package com.yt.android.activity.tts;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -6,6 +6,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.view.Window;
 import com.yt.android.R;
+import com.yt.android.tts.SettingTextWatcher;
 
 /**
  * @author zhangsan
