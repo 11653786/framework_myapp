@@ -23,6 +23,32 @@
             android:background="#00000000"
             android:textColor="#fff"/>
 
+    <!--继续-->
+    <Button
+            android:id="@+id/goon"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-2dp"
+            android:visibility="gone"
+            android:text="zha"
+            android:background="#00000000"
+            android:textColor="#fff"/>
+
+    <!--暂停-->
+    <Button
+            android:id="@+id/pause"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-2dp"
+            android:visibility="gone"
+            android:text="zha"
+            android:background="#00000000"
+            android:textColor="#fff"/>
+
 
     <TextView
             android:id="@+id/biaoti"
