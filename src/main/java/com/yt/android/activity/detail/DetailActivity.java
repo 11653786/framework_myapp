@@ -23,7 +23,7 @@ import com.yt.android.util.IntentUtil;
  */
 public class DetailActivity extends BaseActivity implements View.OnClickListener {
 
-    private Button returnButton;
+    private Button returnButton, play, pause, goon;
     private TextView desc;          //内容
     private ImageView image;        //图片
     private TextView biaoti;        //顶部标题
@@ -37,12 +37,26 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     }
 
     public void initView() {
+        initTts();
         returnButton = (Button) findViewById(R.id.returnbutton);
         image = (ImageView) findViewById(R.id.image);
         desc = (TextView) findViewById(R.id.desc);
         biaoti = (TextView) findViewById(R.id.biaoti);
         returnButton.setOnClickListener(this);
         initIntent();
+    }
+
+
+    /**
+     * 初始化语音播放的信息
+     */
+    public void initTts() {
+        play = (Button) findViewById(R.id.play);
+        pause = (Button) findViewById(R.id.pause);
+        goon = (Button) findViewById(R.id.goon);
+        play.setOnClickListener(this);
+        pause.setOnClickListener(this);
+        goon.setOnClickListener(this);
     }
 
     /**
@@ -80,6 +94,15 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         switch (view.getId()) {
             case R.id.returnbutton:
                 this.finish();
+                break;
+            case R.id.play:
+                ;
+                break;
+            case R.id.pause:
+                ;
+                break;
+            case R.id.goon:
+                ;
                 break;
         }
     }
