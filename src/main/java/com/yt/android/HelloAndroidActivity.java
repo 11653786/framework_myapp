@@ -43,8 +43,9 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
     private RadioButton tabHome, tabMap, tabMy;
     //轮播图pageView
     private ViewPager lunbo = null;
-    private AtomicInteger what1 = new AtomicInteger(0);
-    private boolean isContinue1 = true;
+    private AtomicInteger whats = new AtomicInteger(0);
+    private boolean isContinue = true;
+    private SDKReceiver mReceiver;
 
     //校园空按钮
     private ImageView[] radioButtons = null;
@@ -131,20 +132,17 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
-                isContinue1 = false;
+                isContinue = false;
                 break;
             case MotionEvent.ACTION_UP:
-                isContinue1 = true;
+                isContinue = true;
                 break;
             default:
-                isContinue1 = true;
+                isContinue = true;
                 break;
         }
         return false;
     }
-
-
-    ;
 
 
     /**
@@ -167,8 +165,6 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         }
     }
 
-    private SDKReceiver mReceiver;
-
 
     public void initMap() {
         // 注册 SDK 广播监听者
@@ -178,14 +174,6 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
         mReceiver = new SDKReceiver();
         registerReceiver(mReceiver, iFilter);
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // 取消监听 SDK 广播
-        unregisterReceiver(mReceiver);
     }
 
     /**
@@ -205,13 +193,15 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         new Thread(new picThread()).start();
     }
 
-
+    /**
+     * 自动轮播
+     */
     private class picThread implements Runnable {
         @Override
         public void run() {
             while (true) {
-                if (isContinue1) {
-                    viewHandler.sendEmptyMessage(what1.get());
+                if (isContinue) {
+                    viewHandler.sendEmptyMessage(whats.get());
                     whatOption();
                 }
             }
@@ -219,10 +209,13 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
     }
 
 
+    /**
+     * 动态获取那一个radiobutton被选中
+     */
     private void whatOption() {
-        what1.incrementAndGet();
-        if (what1.get() > radioButtons.length - 1) {
-            what1.getAndAdd(-4);
+        whats.incrementAndGet();
+        if (whats.get() > radioButtons.length - 1) {
+            whats.getAndAdd(-4);
         }
         try {
             Thread.sleep(2000);
@@ -231,6 +224,9 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         }
     }
 
+    /**
+     * 接收消息改变轮播图动态
+     */
     private final Handler viewHandler = new Handler() {
 
         @Override
@@ -240,6 +236,9 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         }
     };
 
+    /**
+     * pageView的滑动监听
+     */
     private final class GuidePageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
@@ -254,7 +253,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
 
         @Override
         public void onPageSelected(int arg0) {
-            what1.getAndSet(arg0);
+            whats.getAndSet(arg0);
             for (int i = 0; i < radioButtons.length; i++) {
                 radioButtons[arg0]
                         .setBackgroundResource(R.drawable.banner_dian_focus);
@@ -265,6 +264,14 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
             }
         }
 
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 取消监听 SDK 广播
+        unregisterReceiver(mReceiver);
     }
 
 }

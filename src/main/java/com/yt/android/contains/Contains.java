@@ -50,10 +50,8 @@ public class Contains {
         ImageView[] radioButtons = new ImageView[advPics.size()];
 
         for (int i = 0; i < advPics.size(); i++) {
-            ImageView imageView1 = new ImageView(context);
-            imageView1.setLayoutParams(new ViewGroup.LayoutParams(20, 20));
-            imageView1.setPadding(5, 5, 5, 5);
-            radioButtons[i] = imageView1;
+
+            radioButtons[i] = getImageView(context);
             if (i == 0) {
                 radioButtons[i]
                         .setBackgroundResource(R.drawable.banner_dian_focus);
@@ -65,6 +63,19 @@ public class Contains {
         }
 
         return radioButtons;
+    }
+
+    /**
+     * 创建image的方法
+     *
+     * @param context
+     * @return
+     */
+    public static ImageView getImageView(Context context) {
+        ImageView imageView = new ImageView(context);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(20, 20));
+        imageView.setPadding(5, 5, 5, 5);
+        return imageView;
     }
 
 }
