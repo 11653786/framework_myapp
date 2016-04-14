@@ -88,7 +88,7 @@
         </activity>
 
         <!--科大讯飞相关的设置activity-->
-        <activity android:name=".tts.setting.TtsSettings"></activity>
+        <activity android:name=".activity.tts.setting.TtsSettings"></activity>
     </application>
 
 </manifest>

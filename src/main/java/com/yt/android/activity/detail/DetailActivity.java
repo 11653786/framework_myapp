@@ -10,10 +10,10 @@ import android.widget.*;
 import com.iflytek.cloud.*;
 import com.iflytek.sunflower.FlowerCollector;
 import com.yt.android.R;
+import com.yt.android.activity.tts.setting.TtsSettings;
 import com.yt.android.base.BaseActivity;
 import com.yt.android.entity.Attachment;
 import com.yt.android.help.DataBaseHelper;
-import com.yt.android.tts.setting.TtsSettings;
 import com.yt.android.util.IntentUtil;
 
 import javax.xml.soap.Text;

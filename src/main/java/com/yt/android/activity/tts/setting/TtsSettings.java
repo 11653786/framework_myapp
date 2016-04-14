@@ -1,4 +1,4 @@
-package com.yt.android.tts.setting;
+package com.yt.android.activity.tts.setting;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;
