@@ -20,6 +20,7 @@
         \u3000<b>校训</b>
         ：勤奋、求是、创新、奉献。释义：学校师生秉承勤俭节约、吃苦奋斗、实事求是、创新创业、敬业奉献的大学文化。以建设优良的校风、教风、学风为重点，凝炼和塑造大学精神，培育和发展大学文化，努力打造现代大学。
     </string>
-
+    <!--科大讯飞的信息-->
     <string name="app_id">54cc3a9e</string>
+    <string formatted="false" name="tts_toast_format">缓冲进度为%d%%，播放进度为%d%%</string>
 </resources>

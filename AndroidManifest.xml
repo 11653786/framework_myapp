@@ -86,6 +86,9 @@
         <!--院系介绍-->
         <activity android:name=".activity.school.introduce.IntroductActivity">
         </activity>
+
+        <!--科大讯飞相关的设置activity-->
+        <activity android:name=".tts.setting.TtsSettings"></activity>
     </application>
 
 </manifest>
