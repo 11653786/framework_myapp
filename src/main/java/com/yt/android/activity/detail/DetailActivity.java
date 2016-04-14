@@ -17,6 +17,7 @@ import com.yt.android.tts.setting.TtsSettings;
 import com.yt.android.util.IntentUtil;
 
 import javax.xml.soap.Text;
+import java.beans.Visibility;
 
 /**
  * 查看详情activity,学校概况
@@ -143,12 +144,16 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
                         showTip("语音合成失败,错误码: " + code);
                     }
                 }
+                pause.setVisibility(View.VISIBLE);
+                play.setVisibility(View.GONE);
                 break;
             case R.id.pause:
-                ;
+                goon.setVisibility(View.VISIBLE);
+                pause.setVisibility(View.GONE);
+                mTts.pauseSpeaking();
                 break;
             case R.id.goon:
-                ;
+                mTts.resumeSpeaking();
                 break;
         }
     }
@@ -224,9 +229,6 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     };
 
 
-
-
-
     private void showTip(final String str) {
         mToast.setText(str);
         mToast.show();
@@ -271,7 +273,6 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         mTts.setParameter(SpeechConstant.AUDIO_FORMAT, "wav");
         mTts.setParameter(SpeechConstant.TTS_AUDIO_PATH, Environment.getExternalStorageDirectory() + "/msc/tts.wav");
     }
-
 
 
 }
