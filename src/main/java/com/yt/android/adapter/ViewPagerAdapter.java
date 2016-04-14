@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 首页底部菜单的切换
@@ -18,10 +18,10 @@ import java.util.ArrayList;
  */
 public class ViewPagerAdapter extends PagerAdapter {
 
-    private ArrayList<ImageView> imageViews;
+    private List<ImageView> imageViews;
 
 
-    public ViewPagerAdapter(ArrayList<ImageView> imageViews) {
+    public ViewPagerAdapter(List<ImageView> imageViews) {
         this.imageViews = imageViews;
     }
 

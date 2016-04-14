@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -25,7 +26,9 @@ import com.yt.android.contains.Contains;
 import com.yt.android.fragment.ApplicationFragment;
 import com.yt.android.fragment.HomeFragment;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 第一个activity
@@ -33,21 +36,18 @@ import java.util.*;
 public class HelloAndroidActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener, View.OnTouchListener {
 
     private static final String LTAG = HelloAndroidActivity.class.getSimpleName();
-    //轮播图相关
-    private ViewPager lunbo;
-    private ArrayList<ImageView> imageViews;
-    private int previousSelectPosition = 0;
-    private boolean toRight = true;
-    //是否向左开始自动播放
-    private boolean toLeft = false;
-    private int lunbopos = 0;
-    //定时器控制自动轮播
-    ImageTimer task = null;
-
+    //中间的5个按钮
     private ViewPager viewpager;
     //我的,地图,首页
     private RadioGroup radioGroup;
     private RadioButton tabHome, tabMap, tabMy;
+    //轮播图pageView
+    private ViewPager lunbo = null;
+    private AtomicInteger what1 = new AtomicInteger(0);
+    private boolean isContinue1 = true;
+
+    //校园空按钮
+    private ImageView[] radioButtons = null;
 
 
     @Override
@@ -62,6 +62,7 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
     private void initView() {
         //百度地图的初始化
         initMap();
+        //轮播图
         initLunbo();
         viewpager = (ViewPager) findViewById(R.id.tabHost);
         //底部导航菜单
@@ -75,21 +76,6 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         viewpager.setAdapter(adapter);
         radioGroup.setOnCheckedChangeListener(this);
         viewpager.setCurrentItem(0);
-    }
-
-
-
-    /**
-     * 初始化轮播图方法
-     */
-    private void initLunbo() {
-        lunbo = (ViewPager) findViewById(R.id.lunbotu);
-        imageViews = Contains.setImageViews(getApplicationContext());
-        lunbo.setAdapter(new ViewPagerAdapter(imageViews));
-        lunbo.setOnTouchListener(this);
-        // 自动切换页面功能
-        task = new ImageTimer();
-        timer.schedule(task, 1000, 2000); // 1s后执行task,经过1s再次执行
     }
 
 
@@ -140,95 +126,25 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         }
     }
 
-
-    /**
-     * 点击屏幕轮播图暂停
-     *
-     * @param view
-     * @param motionEvent
-     * @return
-     */
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                task.setTrue(false);
+            case MotionEvent.ACTION_MOVE:
+                isContinue1 = false;
                 break;
             case MotionEvent.ACTION_UP:
-                task.setTrue(true);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                task.setTrue(false);
+                isContinue1 = true;
                 break;
             default:
+                isContinue1 = true;
                 break;
         }
-        return true;
+        return false;
     }
 
-
-    //轮播图相关的定时器
-    Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-            if (msg.what == 1) {
-                //设置轮播图必须放在这里
-                if (lunbo != null) {
-                    lunbo.setCurrentItem(lunbopos);
-                }
-            }
-        }
-
-        ;
-    };
-    Timer timer = new Timer();
-
-
-    class ImageTimer extends TimerTask {
-
-        private boolean isTrue = true;
-
-        @Override
-        public void run() {
-            //轮播
-            lunbo(isTrue);
-            //发送消息
-            Message message = new Message();
-            message.what = 1;
-            handler.sendMessage(message);
-        }
-
-        public void setTrue(boolean isTrue) {
-            this.isTrue = isTrue;
-        }
-    }
 
     ;
-
-    /**
-     * 轮播运转方法,根据状态来左右轮播
-     */
-    public void lunbo(boolean isTrue) {
-        if (isTrue) {
-            if (lunbopos <= 4) {
-                if (lunbopos == 4) {
-                    toRight = false;
-                    toLeft = true;
-                }
-                if (lunbopos == 0) {
-                    toRight = true;
-                    toLeft = false;
-                }
-
-                if (toRight) {
-                    lunbopos++;
-                }
-                if (toLeft) {
-                    lunbopos--;
-                }
-            }
-        }
-
-    }
 
 
     /**
@@ -272,6 +188,84 @@ public class HelloAndroidActivity extends FragmentActivity implements RadioGroup
         unregisterReceiver(mReceiver);
     }
 
+    /**
+     * 初始化轮播图
+     */
+    private void initLunbo() {
+        lunbo = (ViewPager) findViewById(R.id.adv_pager);
+        ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
+        //轮播图
+        List<ImageView> advPics = Contains.setImageViews(this);
+        //添加小圆孔
+        radioButtons = Contains.addRadioButton(advPics, this, group);
+        lunbo.setAdapter(new ViewPagerAdapter(advPics));
+        lunbo.setOnPageChangeListener(new GuidePageChangeListener());
+        lunbo.setOnTouchListener(this);
+        //开始轮播
+        new Thread(new picThread()).start();
+    }
+
+
+    private class picThread implements Runnable {
+        @Override
+        public void run() {
+            while (true) {
+                if (isContinue1) {
+                    viewHandler.sendEmptyMessage(what1.get());
+                    whatOption();
+                }
+            }
+        }
+    }
+
+
+    private void whatOption() {
+        what1.incrementAndGet();
+        if (what1.get() > radioButtons.length - 1) {
+            what1.getAndAdd(-4);
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    private final Handler viewHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            lunbo.setCurrentItem(msg.what);
+            super.handleMessage(msg);
+        }
+    };
+
+    private final class GuidePageChangeListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageSelected(int arg0) {
+            what1.getAndSet(arg0);
+            for (int i = 0; i < radioButtons.length; i++) {
+                radioButtons[arg0]
+                        .setBackgroundResource(R.drawable.banner_dian_focus);
+                if (arg0 != i) {
+                    radioButtons[i]
+                            .setBackgroundResource(R.drawable.banner_dian_blur);
+                }
+            }
+        }
+
+    }
 
 }
 

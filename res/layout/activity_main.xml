@@ -4,15 +4,33 @@
         >
 
 
-    <android.support.v4.view.ViewPager
-            android:layout_alignParentTop="true"
-            android:id="@+id/lunbotu"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"/>
+    <RelativeLayout
+            android:id="@+id/page1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        <!--轮播图-->
+        <android.support.v4.view.ViewPager
+                android:id="@+id/adv_pager"
+                android:layout_width="fill_parent"
+                android:layout_height="140dp"
+                android:layout_alignParentTop="true"/>
+
+        <!--小白点-->
+        <LinearLayout
+                android:id="@+id/viewGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/adv_pager"
+                android:layout_marginTop="-25px"
+                android:gravity="right"
+                android:orientation="horizontal">
+        </LinearLayout>
+    </RelativeLayout>
 
     <android.support.v4.view.ViewPager
             android:id="@+id/tabHost"
-            android:layout_below="@+id/lunbotu"
+            android:layout_below="@+id/page1"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             />
