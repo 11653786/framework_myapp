@@ -189,12 +189,13 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public void onSpeakPaused() {
-            showTip("暂停播放");
+
         }
 
         @Override
         public void onSpeakResumed() {
-            showTip("继续播放");
+
+
         }
 
         @Override
