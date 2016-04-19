@@ -70,10 +70,8 @@ public class SchoolActivity extends BaseActivity implements View.OnClickListener
      * @param l
      */
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-        ListView itemListView = (ListView) parent;
-        TextView title = (TextView) itemListView.findViewById(R.id.title);
-        TextView id = (TextView) itemListView.findViewById(R.id.id);
+    public void onItemClick(AdapterView<?> parent, View currentitem, int i, long l) {
+        TextView id = (TextView) currentitem.findViewById(R.id.id);
         IntentUtil.clickButtonActivity(this, DetailActivity.class, "id", id.getText().toString(), "actions", "新闻");
     }
 

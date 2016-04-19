@@ -73,10 +73,9 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener, 
      * @param l
      */
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-        ListView itemListView = (ListView) parent;
-        TextView id = (TextView) itemListView.findViewById(R.id.id);
-        IntentUtil.clickButtonActivity(this, DetailActivity.class, "id", id.getText().toString(), "actions", "新闻");
+    public void onItemClick(AdapterView<?> parent, View view, int postion, long id) {
+        TextView idText = (TextView) view.findViewById(R.id.id);
+        IntentUtil.clickButtonActivity(this, DetailActivity.class, "id", idText.getText().toString(), "actions", "新闻");
     }
 
     @Override
