@@ -8,3 +8,7 @@ out
 .git
 .idea
 /assets
+.classpath
+.project
+project.properties
+
