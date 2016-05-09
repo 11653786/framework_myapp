@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.yt.android.R;
 import com.yt.android.activity.calculator.CalculatorActivity;
+import com.yt.android.activity.calender.CalenderActivity;
 import com.yt.android.activity.map.MapActivity;
 import com.yt.android.activity.weather.WeatherActivity;
 import com.yt.android.util.IntentUtil;
@@ -83,6 +84,9 @@ public class ApplicationFragment extends Fragment implements View.OnClickListene
                 break;
             case R.id.weather:
                 IntentUtil.clickButtonActivity(view.getContext(), WeatherActivity.class);
+                break;
+            case R.id.calendar:
+                IntentUtil.clickButtonActivity(view.getContext(), CalenderActivity.class);
                 break;
         }
 

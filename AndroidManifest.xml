@@ -91,6 +91,8 @@
         <activity android:name=".activity.tts.setting.TtsSettings"></activity>
         <!--天气activity-->
         <activity android:name=".activity.weather.WeatherActivity"></activity>
+        <!--日历activty-->
+        <activity android:name=".activity.calender.CalenderActivity"></activity>
     </application>
 
 </manifest>

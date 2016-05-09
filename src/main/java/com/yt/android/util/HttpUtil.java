@@ -5,37 +5,6 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URLEncoder;
-import java.security.KeyStore;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
-
-import android.content.Context;
-import android.net.ConnectivityManager;
 
 /**
  * @author zhangsan
@@ -44,6 +13,7 @@ import android.net.ConnectivityManager;
  * @date 2016/5/6 0006 10:47
  * @descption: 疯狂的王麻子团队!
  */
+@Deprecated
 public class HttpUtil {
 
     public static String CONTENT_TYPE_PLAIN = "text/plain";
@@ -51,7 +21,7 @@ public class HttpUtil {
     public static String CONTENT_TYPE_XML = "text/xml";
     public static String CONTENT_TYPE_JSON = "application/json";
 
-
+    @Deprecated
     public static String SendRequest(String adress_Http, String strJson, String contentType) {
 
         String returnLine = "";
