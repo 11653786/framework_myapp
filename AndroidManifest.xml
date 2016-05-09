@@ -89,6 +89,8 @@
 
         <!--科大讯飞相关的设置activity-->
         <activity android:name=".activity.tts.setting.TtsSettings"></activity>
+        <!--天气activity-->
+        <activity android:name=".activity.weather.WeatherActivity"></activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.yt.android.R;
 import com.yt.android.activity.calculator.CalculatorActivity;
 import com.yt.android.activity.map.MapActivity;
+import com.yt.android.activity.weather.WeatherActivity;
 import com.yt.android.util.IntentUtil;
 
 /**
@@ -52,6 +53,8 @@ public class ApplicationFragment extends Fragment implements View.OnClickListene
         weather = (ImageView) view.findViewById(R.id.weather);
         mapbutton.setOnClickListener(this);
         jisuanqibutton.setOnClickListener(this);
+        calendar.setOnClickListener(this);
+        weather.setOnClickListener(this);
     }
 
     @Override
@@ -77,6 +80,9 @@ public class ApplicationFragment extends Fragment implements View.OnClickListene
                 break;
             case R.id.mapbutton:
                 IntentUtil.clickButtonActivity(view.getContext(), MapActivity.class);
+                break;
+            case R.id.weather:
+                IntentUtil.clickButtonActivity(view.getContext(), WeatherActivity.class);
                 break;
         }
 
