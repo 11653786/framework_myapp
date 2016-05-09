@@ -1,5 +1,6 @@
 package com.yt.android.util;
 
+import com.sun.deploy.util.StringUtils;
 import org.apache.http.client.methods.HttpPost;
 
 import java.io.BufferedReader;
@@ -16,7 +17,14 @@ import java.net.URL;
  * @descption: 疯狂的王麻子团队!
  */
 public class HttpUtil {
-    public static String SendRequest(String adress_Http, String strJson) {
+
+    public static String CONTENT_TYPE_PLAIN = "text/plain";
+    public static String CONTENT_TYPE_HTML = "text/html";
+    public static String CONTENT_TYPE_XML = "text/xml";
+    public static String CONTENT_TYPE_JSON = "application/json";
+
+
+    public static String SendRequest(String adress_Http, String strJson, String contentType) {
 
         String returnLine = "";
         try {
@@ -35,8 +43,11 @@ public class HttpUtil {
             connection.setUseCaches(false);
 
             connection.setInstanceFollowRedirects(true);
-
-            connection.setRequestProperty("Content-Type", "application/json");
+            //相应头设置
+            if (contentType == null || contentType.equals("")) {
+                contentType = CONTENT_TYPE_JSON;
+            }
+            connection.setRequestProperty("Content-Type", contentType);
 
             connection.connect();
             DataOutputStream out = new DataOutputStream(connection
@@ -76,11 +87,6 @@ public class HttpUtil {
         return returnLine;
 
     }
-
-
-
-
-
 
 
 }
