@@ -2,9 +2,11 @@ package com.yt.android.activity.weather;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.TextView;
 import com.yt.android.R;
 import com.yt.android.base.BaseActivity;
 import com.yt.android.util.HttpUtil;
+import com.yt.android.util.HttpUtils;
 
 /**
  * 天气activity
@@ -22,26 +24,32 @@ public class WeatherActivity extends BaseActivity {
     //获取天气的url
     private String weatherUrL = "http://www.weather.com.cn/data/sk/" + shanghaiCode + ".html";
 
+    TextView aa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news);
+        setContentView(R.layout.activity_weather);
+        initView();
         WeatherAsyncTask weatherAsyncTask = new WeatherAsyncTask();
         weatherAsyncTask.execute(weatherUrL, "", HttpUtil.CONTENT_TYPE_HTML);
     }
 
+
+    public void initView() {
+        aa = (TextView) findViewById(R.id.aa);
+    }
+
+
     private class WeatherAsyncTask extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... strings) {
-            String postUrl = strings[0];
-            String jsonStr = strings[1];
-            String contentType = strings[2];
-            return HttpUtil.SendRequest(postUrl, jsonStr, contentType);
+            return HttpUtils.doGet(weatherUrL);
         }
 
         @Override
         protected void onPostExecute(String s) {
-            System.out.println(s);
+            aa.setText(s);
             super.onPostExecute(s);
         }
     }
