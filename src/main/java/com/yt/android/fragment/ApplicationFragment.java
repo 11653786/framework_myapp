@@ -24,7 +24,7 @@ import com.yt.android.util.IntentUtil;
  */
 public class ApplicationFragment extends Fragment implements View.OnClickListener {
 
-    ImageView jisuanqibutton, mapbutton;
+    ImageView jisuanqibutton, mapbutton, weather, calendar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,8 @@ public class ApplicationFragment extends Fragment implements View.OnClickListene
     public void initView(View view) {
         jisuanqibutton = (ImageView) view.findViewById(R.id.jisuanqibutton);
         mapbutton = (ImageView) view.findViewById(R.id.mapbutton);
+        calendar = (ImageView) view.findViewById(R.id.calendar);
+        weather = (ImageView) view.findViewById(R.id.weather);
         mapbutton.setOnClickListener(this);
         jisuanqibutton.setOnClickListener(this);
     }
