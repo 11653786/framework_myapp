@@ -71,7 +71,7 @@
                     android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
-                    android:src="@drawable/baiduicon"
+                    android:src="@drawable/wannianli"
                     />
             <TextView
                     android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:clickable="true"
                     android:layout_height="120dp"
-                    android:src="@drawable/jisuanqi333"
+                    android:src="@drawable/tianqiyubao"
                     />
             <TextView
                     android:layout_alignParentBottom="true"
