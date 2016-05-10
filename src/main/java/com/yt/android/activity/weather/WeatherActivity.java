@@ -2,6 +2,7 @@ package com.yt.android.activity.weather;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yt.android.R;
@@ -28,6 +29,7 @@ public class WeatherActivity extends BaseActivity {
     private String weatherUrL = "http://www.weather.com.cn/data/cityinfo/" + shanghaiCode + ".html";
 
     TextView city, weather, temp, ptime;
+    ImageView weatherlogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class WeatherActivity extends BaseActivity {
         weather = (TextView) findViewById(R.id.weathers);
         temp = (TextView) findViewById(R.id.temp);
         ptime = (TextView) findViewById(R.id.ptime);
+        weatherlogo = (ImageView) findViewById(R.id.weatherlogo);
     }
 
     /**
@@ -67,8 +70,23 @@ public class WeatherActivity extends BaseActivity {
                 weather.setText(weather.getText() + weatherInfo.getWeatherinfo().getWeather());
                 temp.setText(temp.getText() + weatherInfo.getWeatherinfo().getTemp1() + "~~~" + weatherInfo.getWeatherinfo().getTemp2());
                 ptime.setText(ptime.getText() + weatherInfo.getWeatherinfo().getPtime());
-            }
+                String weather = weatherInfo.getWeatherinfo().getWeather();
+                if (weather != null && !weather.equals("")) {
+                    if (weather.contains("云")) {
+                        weatherlogo.setBackgroundResource(R.drawable.d02);
+                    } else if (weather.contains("雨")) {
+                        weatherlogo.setBackgroundResource(R.drawable.d09);
+                    } else if (weather.contains("晴")) {
+                        weatherlogo.setBackgroundResource(R.drawable.d00);
+                    } else if (weather.contains("雪")) {
+                            weatherlogo.setBackgroundResource(R.drawable.n26);
+                    }else{
+                        weatherlogo.setBackgroundResource(R.drawable.d02);
+                    }
 
+                }
+
+            }
         }
     }
 }
