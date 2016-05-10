@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.yt.android.R;
 import com.yt.android.base.BaseActivity;
 import com.yt.android.entity.WeatherInfo;
-import com.yt.android.util.HttpUtil;
 import com.yt.android.util.HttpUtils;
 
 /**
