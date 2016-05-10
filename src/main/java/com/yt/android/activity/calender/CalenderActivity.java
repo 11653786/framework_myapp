@@ -1,11 +1,5 @@
 package com.yt.android.activity.calender;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,9 +7,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.yt.android.R;
+import com.yt.android.base.BaseActivity;
 import com.yt.android.view.CalendarView;
 
-public class CalenderActivity extends Activity {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * 日历activity
+ */
+public class CalenderActivity extends BaseActivity {
     private CalendarView calendar;
     private ImageButton calendarLeft;
     private TextView calendarCenter;
