@@ -1,6 +1,8 @@
 package com.yt.android.util;
 
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -114,6 +116,7 @@ public class HttpUtils {
             }
 
         } catch (Exception e) {
+            Log.e("",e.getMessage());
             e.printStackTrace();
         } finally {
             try {
