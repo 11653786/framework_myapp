@@ -56,7 +56,7 @@ public class WeatherActivity extends BaseActivity {
         @Override
         protected String doInBackground(String... params) {
             //发送http请求获取数据
-            return HttpUtils.doGet(weatherUrL);
+            return HttpUtils.doPost(weatherUrL,"");
         }
 
         @Override
